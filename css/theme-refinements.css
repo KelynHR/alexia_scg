@@ -117,6 +117,31 @@
 :root[data-theme="dark"] body[data-page="tablero"] .ag-strip {background:#142536!important;border-color:#435b75!important}
 :root[data-theme="dark"] body[data-page="tablero"] .nav,
 :root[data-theme="dark"] body[data-page="tablero"] .sheet-bar {background:rgba(11,18,28,.95)!important}
+/* Keep dashboard filters readable in both the closed control and native menus. */
+:root[data-theme="dark"] body[data-page="tablero"] .filters .sel,
+:root[data-theme="dark"] body[data-page="crm"] .tools select {
+  background-color:#192a3c!important;
+  color:#f1f5fa!important;
+  border:1px solid #516b87!important;
+  -webkit-text-fill-color:#f1f5fa;
+  color-scheme:dark;
+}
+:root[data-theme="dark"] body[data-page="tablero"] .filters .sel:hover,
+:root[data-theme="dark"] body[data-page="crm"] .tools select:hover {
+  background-color:#20364d!important;
+  border-color:#7894b2!important;
+}
+:root[data-theme="dark"] body[data-page="tablero"] .filters .sel:focus-visible,
+:root[data-theme="dark"] body[data-page="crm"] .tools select:focus-visible {
+  outline:3px solid #8bc1ff;
+  outline-offset:2px;
+}
+:root[data-theme="dark"] body[data-page="tablero"] .filters .sel option,
+:root[data-theme="dark"] body[data-page="crm"] .tools select option {
+  background:#121e2d;
+  color:#f1f5fa;
+  -webkit-text-fill-color:#f1f5fa;
+}
 :root[data-theme="dark"] body[data-page="demos"],
 :root[data-theme="dark"] body[data-page="demos"].app {
   --bg:var(--night-bg);--surface:var(--night-card);--soft:var(--night-raised);--ink:#edf4fc;--navy:#edf4fc;
