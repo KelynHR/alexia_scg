@@ -1,0 +1,67 @@
+/* Reservation UI; follows the active light/dark palette. */
+.booking-status,.booking-privacy{font-size:12px;line-height:1.6;color:var(--muted);margin-top:12px}
+.booking-status button{color:var(--l1);font-weight:600;text-decoration:underline}
+.booking-privacy,.booking-error{grid-column:1/-1}
+.booking-error:empty{display:none}
+.booking-trap{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+.ag2 .btn:disabled{opacity:.6;cursor:wait;transform:none}
+.booking-saved-label{font:600 11px var(--body,system-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--l4,#167b6d);margin-bottom:12px}
+.booking-reference{overflow-wrap:anywhere;font-size:13px;margin:14px 0!important}
+.done2 #ag-new{margin-top:20px}
+html.booking-confirm-open{overflow:hidden}
+.booking-modal{width:min(520px,calc(100% - 32px));max-height:calc(100dvh - 40px);overflow-y:auto;border:1px solid var(--line,#dce4ed);border-radius:26px;background:var(--card,#fff);color:var(--text,#3b4754);padding:clamp(24px,5vw,40px);text-align:center;box-shadow:0 24px 90px rgba(0,0,0,.25)}
+.booking-modal::backdrop{background:rgba(5,15,27,.7)}
+.booking-modal h2{font-size:clamp(27px,5vw,36px);line-height:1.2;margin:12px 0 16px}
+.booking-modal p{margin-top:12px;font-size:14px}
+.booking-modal .btn{margin-top:24px;width:100%}
+.booking-check{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;margin:0 auto 20px;background:#e0f3ed;color:#126e55;font:600 26px system-ui}
+.booking-modal-note{color:var(--muted,#607084)}
+:root[data-theme="dark"] .booking-check{background:#1b3b43;color:#abf0e4}
+:root[data-theme="dark"] .booking-modal .btn.p{background:#245bb6;color:#fff;border:1px solid #83b8fa}
+/* Private administration */
+body[data-page="admin"]{--bg:#f5f7fb;--card:#fff;--soft:#eef3f9;--line:#d3dce7;--fg:#14314b;--fg2:#52677c;--muted:#52677c;--blue:#245bb6;margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,sans-serif}
+.admin-shell{max-width:1140px;margin:0 auto;padding:24px;min-width:0}
+.admin-header{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:28px}
+.admin-header h1{font-size:24px;margin:0;letter-spacing:-.03em}
+.admin-header p{margin:4px 0 0;color:var(--fg2);font-size:13px}
+.admin-brand{width:44px;height:44px;background:#123b57;color:white;display:grid;place-items:center;border-radius:14px;font-weight:700}
+.admin-nav{display:flex;gap:10px;margin-left:auto;align-items:center;flex-wrap:wrap}
+body[data-page="admin"] button,body[data-page="admin"] .admin-link{font:600 13px system-ui,sans-serif;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer;text-decoration:none;min-height:42px}
+body[data-page="admin"] button.primary{background:#245bb6;color:#fff;border-color:#245bb6}
+body[data-page="admin"] button:disabled{opacity:.6;cursor:wait}
+body[data-page="admin"] :focus-visible{outline:3px solid #83b8fa;outline-offset:3px}
+.admin-login{max-width:440px;margin:50px auto;border:1px solid var(--line);border-radius:22px;background:var(--card);padding:28px}
+.admin-login h2{margin:0 0 8px;font-size:24px}
+.admin-login p{color:var(--fg2);font-size:14px}
+.admin-field{display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:600;min-width:0}
+.admin-field input,.admin-field select,.booking-card select{font:inherit;font-size:15px;min-width:0;width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--fg)}
+.admin-login form{display:grid;gap:16px;margin-top:24px}
+.admin-filters{display:flex;align-items:end;gap:12px;flex-wrap:wrap;padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--card);margin-bottom:20px}
+.admin-filters .admin-field{flex:1 1 155px}
+.admin-message{font-size:14px;color:var(--fg2);margin:16px 0;min-height:22px}
+.admin-message.error{color:#b63527}
+:root[data-theme="dark"] .admin-message.error{color:#ffb6ad}
+.booking-list{display:grid;gap:14px}
+.booking-card{border:1px solid var(--line);border-radius:18px;background:var(--card);padding:20px;min-width:0}
+.booking-card header{display:flex;gap:14px;align-items:start;justify-content:space-between;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.booking-card h2{margin:4px 0;font-size:19px;overflow-wrap:anywhere}
+.booking-card .booking-folio{font-size:11px;color:var(--fg2);letter-spacing:.07em;overflow-wrap:anywhere}
+.booking-card .booking-date{font-size:14px;font-weight:600;color:var(--blue);margin-top:4px}
+.booking-card dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 20px;margin:18px 0}
+.booking-card dt{font-size:11px;color:var(--fg2);margin-bottom:3px}
+.booking-card dd{margin:0;overflow-wrap:anywhere;font-size:14px;white-space:pre-wrap}
+.booking-card .wide{grid-column:1/-1}
+.booking-card footer{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-top:14px;border-top:1px solid var(--line)}
+.booking-card select{width:auto;max-width:100%}
+.booking-badge{display:inline-block;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:600;background:var(--soft)}
+.booking-badge[data-state="registrada"]{background:#e4efff;color:#204d8a}
+.booking-badge[data-state="confirmada"]{background:#e0f3ed;color:#126e55}
+.booking-badge[data-state="cancelada"]{background:#f8e8e6;color:#963e34}
+:root[data-theme="dark"] .booking-badge[data-state="registrada"]{background:#1b3047;color:#c5dfff}
+:root[data-theme="dark"] .booking-badge[data-state="confirmada"]{background:#1b3b43;color:#abf0e4}
+:root[data-theme="dark"] .booking-badge[data-state="cancelada"]{background:#3b282c;color:#ffbbb0}
+.admin-pagination{display:flex;justify-content:center;align-items:center;gap:16px;margin:24px 0}
+.admin-empty{padding:36px;text-align:center;border:1px dashed var(--line);border-radius:18px;color:var(--fg2)}
+[hidden]{display:none!important}
+@media(max-width:600px){.admin-shell{padding:18px 14px}.admin-login{padding:22px;margin-top:28px}.admin-nav{margin-left:0;width:100%}.booking-card{padding:16px}.booking-card dl{grid-template-columns:1fr 1fr}.admin-filters>button{flex:1 1 auto}}
+@media(max-width:360px){.booking-card dl{grid-template-columns:1fr}}
