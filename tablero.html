@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head><script>(function(){var t=new URLSearchParams(location.search).get("theme");if(t)document.documentElement.setAttribute("data-theme",t);addEventListener("message",function(e){if(e.data&&e.data.alexiaTheme)document.documentElement.setAttribute("data-theme",e.data.alexiaTheme)})})()</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grupo Vantrel · Tablero de dirección 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="js/chart.umd.js"></script>
+<style>
+:root{--bg:#f5f5f7;--card:#fff;--fg:#1d1d1f;--fg2:#6e6e73;--fg3:#86868b;--line:rgba(0,0,0,.08);--blue:#0071e3;--green:#248a3d;--green-bg:#e3f5e8;--red:#d70015;--red-bg:#fdecec;--yellow:#b25000;--yellow-bg:#fff4e0;--r:22px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.45;letter-spacing:-.01em}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:rgba(251,251,253,.78);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:16px;height:56px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px;white-space:nowrap;letter-spacing:-.02em}
+.mark{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#1d1d1f,#48484a);display:grid;place-items:center;color:#fff;font-size:11px;font-weight:700;letter-spacing:0}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:7px 11px;border-radius:999px;font-size:13px;color:var(--fg2);white-space:nowrap;transition:background .2s,color .2s}
+.tab:hover{color:var(--fg)}
+.tab.on{background:var(--fg);color:#fff}
+.filters{display:flex;gap:8px}
+.sel{appearance:none;-webkit-appearance:none;border:0;background:rgba(0,0,0,.05) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%236e6e73' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 11px center;padding:7px 28px 7px 13px;border-radius:999px;font:inherit;font-size:13px;color:var(--fg);cursor:pointer}
+.filters .sel{max-width:158px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
+.sel:focus-visible,.tab:focus-visible,.alert:focus-visible,.win:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+/* layout */
+main{max-width:1240px;margin:0 auto;padding:8px 24px 64px}
+.reveal>*{animation:up .6s cubic-bezier(.2,.7,.2,1) both}
+.reveal>*:nth-child(2){animation-delay:.05s}.reveal>*:nth-child(3){animation-delay:.1s}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.head{padding:44px 0 28px}
+.eyebrow{font-size:13px;font-weight:600;color:var(--fg3);letter-spacing:0;margin-bottom:8px}
+h1{font-size:clamp(32px,5vw,56px);line-height:1.05;letter-spacing:-.035em;font-weight:700;margin:0;max-width:16ch}
+.lede{font-size:clamp(17px,1.8vw,21px);color:var(--fg2);margin:16px 0 0;max-width:62ch;line-height:1.4;letter-spacing:-.015em}
+.card{background:var(--card);border-radius:var(--r);padding:24px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px}
+.kpis.k5{grid-template-columns:repeat(5,1fr)}
+.kpi{padding:20px 22px 16px;position:relative;overflow:hidden;min-height:0;display:flex;flex-direction:column}
+.kpi-label{font-size:13px;color:var(--fg2);font-weight:500}
+.kpi-value{font-size:clamp(24px,2.4vw,32px);font-weight:700;letter-spacing:-.03em;margin:6px 0 6px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.kpi-foot{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px}
+.kpi-sub{color:var(--fg3)}
+.spark{width:100%;height:30px;margin-top:auto;padding-top:10px;display:block}
+.delta{display:inline-flex;align-items:center;gap:3px;font-size:12px;font-weight:600;padding:2px 7px;border-radius:999px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.delta.good{color:var(--green);background:var(--green-bg)}.delta.bad{color:var(--red);background:var(--red-bg)}.delta.flat{color:var(--fg2);background:rgba(0,0,0,.05)}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.span-12{grid-column:span 12}.span-7{grid-column:span 7}.span-6{grid-column:span 6}.span-5{grid-column:span 5}
+.card-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+h3{font-size:19px;font-weight:600;letter-spacing:-.022em;margin:0}
+.card-sub,.hint{font-size:12px;color:var(--fg3)}
+.chart{position:relative;width:100%}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--fg2);margin:-4px 0 12px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.note{font-size:13px;color:var(--fg2);margin:14px 0 0}
+.muted{color:var(--fg3)}.s{font-size:12px}
+/* alerts */
+.alerts{display:flex;flex-direction:column;gap:2px}
+.alert{display:flex;gap:14px;align-items:flex-start;padding:14px 12px;border-radius:14px;width:100%;transition:background .15s}
+.alert:hover{background:var(--bg)}
+.sev{width:10px;height:10px;border-radius:50%;margin-top:6px;flex:none}
+.sev.alta{background:#e0352b;box-shadow:0 0 0 4px rgba(224,53,43,.14)}.sev.media{background:#f08c00;box-shadow:0 0 0 4px rgba(240,140,0,.14)}
+.alert-body{display:flex;flex-direction:column;gap:3px;flex:1}
+.alert-meta{font-size:11px;font-weight:600;color:var(--fg3);text-transform:uppercase;letter-spacing:.04em}
+.alert-title{font-weight:600;font-size:15px;line-height:1.3}
+.alert-sub{font-size:13px;color:var(--fg2)}
+.chev{color:#c7c7cc;font-size:22px;line-height:1;align-self:center}
+/* wins */
+.wins{display:flex;flex-direction:column;gap:10px}
+.win{display:flex;gap:14px;align-items:center;padding:14px;border-radius:16px;background:var(--bg);width:100%;transition:transform .15s,background .15s}
+.win:hover{background:#ececf0}
+.win-k{font-size:22px;font-weight:700;letter-spacing:-.03em;min-width:92px;color:var(--green);font-variant-numeric:tabular-nums}
+.win-t{font-size:13px;color:var(--fg);flex:1;line-height:1.35}
+/* tables */
+.table-wrap{overflow-x:auto;margin:0 -8px}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+th{font-size:12px;font-weight:500;color:var(--fg3);text-align:left;padding:8px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:11px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+tbody tr:last-child td{border-bottom:0}
+.r{text-align:right;white-space:nowrap}
+tr.click{cursor:pointer;transition:background .15s}
+tr.click:hover td{background:var(--bg)}
+tr.sel td{background:rgba(0,113,227,.06)}
+tr.hot td{background:rgba(224,53,43,.04)}
+.chev-c{color:#c7c7cc;font-size:20px;width:20px;text-align:right}
+.pl tr.tot td{font-weight:700;border-top:1px solid rgba(0,0,0,.18)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;vertical-align:middle}
+.dot.g{background:#34c759}.dot.y{background:#ff9f0a}.dot.r{background:#e0352b}
+.tag{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;background:rgba(0,0,0,.06)}
+.tag.new{background:var(--green-bg);color:var(--green)}
+.cls-A{background:rgba(0,113,227,.12);color:var(--blue)}.cls-B{background:rgba(94,92,230,.12);color:#5e5ce6}.cls-C{background:rgba(0,0,0,.06);color:var(--fg2)}
+.prog{display:inline-block;width:calc(100% - 48px);height:6px;border-radius:9px;background:#ececf0;vertical-align:middle;overflow:hidden}
+.prog span{display:block;height:100%;border-radius:9px}.prog .g{background:#34c759}.prog .y{background:#ff9f0a}.prog .r{background:#e0352b}
+.prog-v{display:inline-block;width:44px;text-align:right;font-size:13px;font-weight:600}
+.bars{display:flex;flex-direction:column;gap:12px}
+.bar-row{display:grid;grid-template-columns:150px 1fr auto;gap:12px;align-items:center;font-size:13px}
+.bar-row.click{cursor:pointer;border-radius:10px;padding:4px;margin:-4px}.bar-row.click:hover{background:var(--bg)}
+.bar-t{height:8px;background:#ececf0;border-radius:9px;overflow:hidden}.bar-t span{display:block;height:100%;background:var(--blue);border-radius:9px}
+.bar-v{white-space:nowrap;font-variant-numeric:tabular-nums;display:flex;gap:6px;align-items:center}
+.flash{animation:flash 2.2s ease}
+.flash-b{animation:flashb 2.2s ease}
+@keyframes flashb{0%,30%{box-shadow:0 0 0 3px rgba(0,113,227,.55)}100%{box-shadow:0 1px 2px rgba(0,0,0,.03)}}
+.kpi.go{cursor:pointer;transition:transform .2s,box-shadow .2s}.kpi.go:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08)}.kpi.go:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.kpi-go{position:absolute;top:16px;right:18px;color:#c7c7cc;font-size:20px;line-height:1;transition:color .2s,transform .2s}.kpi.go:hover .kpi-go{color:var(--blue);transform:translateX(2px)}
+@keyframes flash{0%,30%{box-shadow:0 0 0 3px rgba(224,53,43,.55)}100%{box-shadow:0 1px 2px rgba(0,0,0,.03)}}
+/* CCC */
+.ccc{display:flex;flex-direction:column;gap:22px}
+.ccc-row{display:grid;grid-template-columns:120px 1fr 90px;grid-template-rows:auto auto;gap:6px 16px;align-items:center}
+.ccc-lab{grid-column:1;grid-row:1/3;font-weight:600;font-size:14px}
+.ccc-track{grid-column:2;grid-row:1}.ccc-track.sub{grid-row:2}
+.ccc-res{grid-column:3;grid-row:1/3;text-align:right;font-size:13px;color:var(--fg2)}.ccc-res b{font-size:28px;color:var(--fg);letter-spacing:-.03em;display:block;line-height:1}
+.ccc-track{display:flex;height:34px;gap:3px}.ccc-track.sub{height:22px}
+.seg{border-radius:9px;display:flex;align-items:center;padding:0 10px;overflow:hidden;min-width:0;transition:width .8s cubic-bezier(.2,.7,.2,1)}
+.seg em{font-style:normal;font-size:12px;font-weight:600;white-space:nowrap}
+.seg.inv{background:#0071e3;color:#fff}.seg.cob{background:#5ac8fa;color:#003a70}.seg.pay{background:#e5e5ea;color:var(--fg2)}
+/* sheet */
+#scrim{position:fixed;inset:0;background:rgba(0,0,0,.28);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .3s;z-index:40}
+#sheet{position:fixed;top:0;right:0;bottom:0;width:min(680px,100%);background:var(--bg);z-index:41;transform:translateX(102%);transition:transform .42s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.12)}
+.sheet-open #scrim{opacity:1;pointer-events:auto}.sheet-open #sheet{transform:none}
+.sheet-open{overflow:hidden}
+.sheet-bar{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:rgba(245,245,247,.85);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+#sheet-back{color:var(--blue);font-size:15px;font-weight:500}
+#sheet-x{width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.06);display:grid;place-items:center;font-size:15px;color:var(--fg2);text-align:center}
+#sheet-body{overflow-y:auto;padding:24px 28px 48px;flex:1}
+#sheet-body h2{font-size:34px;letter-spacing:-.03em;margin:0 0 4px;line-height:1.1}
+#sheet-body h4{font-size:17px;font-weight:600;letter-spacing:-.02em;margin:28px 0 12px}
+#sheet-body .alert{background:#fff;margin-bottom:6px}
+#sheet-body .table-wrap,#sheet-body .bars,#sheet-body .chart{background:#fff;border-radius:18px}
+#sheet-body .table-wrap{margin:0;padding:4px 12px}
+#sheet-body .bars{padding:18px}
+#sheet-body .chart{padding:12px;box-sizing:content-box;margin-left:-12px;width:100%}
+.skpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}
+.skpi{background:#fff;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.skpi span{font-size:12px;color:var(--fg2)}.skpi b{font-size:20px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.callout{margin-top:16px;padding:16px 18px;border-radius:16px;background:#fff;font-size:14px;line-height:1.5;border-left:4px solid #c7c7cc}
+.callout.bad{border-left-color:#e0352b}.callout.good{border-left-color:#34c759}
+.stackbar{display:flex;height:16px;border-radius:9px;overflow:hidden;gap:2px;margin-bottom:12px}
+footer{max-width:1240px;margin:0 auto;padding:0 24px 40px;font-size:12px;color:var(--fg3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.show-s{display:none}
+@media (max-width:1560px){.brand-t{display:none}}
+@media (max-width:1080px){.kpis,.kpis.k5{grid-template-columns:repeat(3,1fr)}.filters .sel{max-width:170px}}
+@media (max-width:900px){.brand-t{display:inline}.span-7,.span-6,.span-5{grid-column:span 12}.kpis,.kpis.k5{grid-template-columns:repeat(2,1fr)}
+  .nav-in{flex-wrap:wrap;height:auto;padding:10px 16px;gap:10px}.brand{flex:1}.tabs{order:3;flex-basis:100%}main{padding:0 16px 48px}.head{padding:28px 0 20px}}
+@media (max-width:600px){.hide-s{display:none}.show-s{display:block}.card{padding:18px;border-radius:18px}.kpi{min-height:118px;padding:16px}.skpis{grid-template-columns:repeat(2,1fr)}
+  .bar-row{grid-template-columns:1fr auto;}.bar-row .bar-t{grid-column:span 2;order:3}.ccc-row{grid-template-columns:1fr 70px}.ccc-lab{grid-row:1;grid-column:1/3}.ccc-track{grid-column:1;grid-row:2}.ccc-track.sub{grid-row:3}.ccc-res{grid-row:2/4;grid-column:2}
+  .filters{width:100%;display:grid;grid-template-columns:1fr 1fr}.filters .sel{min-width:0;max-width:none;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}#sheet-body{padding:20px 18px 40px}#sheet-body h2{font-size:28px}.brand-t{font-size:14px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<style id="white">:root:not([data-theme="dark"]){--bg:#fff!important}:root:not([data-theme="dark"]) body{background:#fff!important}:root:not([data-theme="dark"]) .card{border:1px solid #E6E9EE;box-shadow:none!important}:root:not([data-theme="dark"]) .nav{background:rgba(255,255,255,.88)!important}:root:not([data-theme="dark"]) .sheet,:root:not([data-theme="dark"]) #sheet,:root:not([data-theme="dark"]) .sheet-bar{background:#fff!important}:root:not([data-theme="dark"]) #ag,:root:not([data-theme="dark"]) #ag header{background:#fff!important}.ag-c{border:1px solid var(--line)}
+:root[data-theme="dark"]{--bg:#000;--card:#1c1c1e;--fg:#f5f5f7;--fg2:#a1a1a6;--fg3:#8e8e93;--line:rgba(255,255,255,.12);--blue:#2997ff;--green:#30d158;--green-bg:rgba(48,209,88,.16);--red:#ff6961;--red-bg:rgba(255,105,97,.16);--yellow:#ffb340;--yellow-bg:rgba(255,179,64,.16);color-scheme:dark}
+:root[data-theme="dark"] body{background:#000}:root[data-theme="dark"] .card{border:1px solid var(--line);box-shadow:none}
+:root[data-theme="dark"] .nav,:root[data-theme="dark"] .sheet-bar{background:rgba(0,0,0,.78)!important}:root[data-theme="dark"] .sheet,:root[data-theme="dark"] #sheet{background:#1c1c1e!important}
+:root[data-theme="dark"] #ag,:root[data-theme="dark"] #ag header{background:#1c1c1e!important;color:#f5f5f7}:root[data-theme="dark"] .ag-c,:root[data-theme="dark"] .ag-strip{background:#111113!important;color:#f5f5f7}:root[data-theme="dark"] .ag-draft{background:#2c2c2e}
+:root[data-theme="dark"] .ag-steps li.on{color:#f5f5f7}:root[data-theme="dark"] .ag-row{border-color:rgba(255,255,255,.08)}:root[data-theme="dark"] #ag-fab{background:#1c1c1e!important;color:#f5f5f7!important;border-color:#2c2c2e!important}:root[data-theme="dark"] #ag-fab .orb i{background:#1c1c1e!important}
+:root[data-theme="dark"] .ag-row button{background:#f5f5f7;color:#000}:root[data-theme="dark"] .tab.on{color:#000}:root[data-theme="dark"] .ag-strip{border-color:#2c2c2e!important}:root[data-theme="dark"] .ag-row .tx span,:root[data-theme="dark"] .ag-c .s{color:#a1a1a6}</style><style id="responsive-fixes">
+/* Keep document scrolling on the root; constrain flexible children. */
+html{overflow-x:clip}
+body{min-width:0;overflow-wrap:break-word}
+*,*::before,*::after{box-sizing:border-box}
+main,section,article,form,fieldset{min-width:0}
+img,video{max-width:100%;height:auto}
+input,select,textarea{min-width:0;max-width:100%}
+iframe{display:block;min-width:0}
+@media(max-width:600px){input,select,textarea{font-size:16px}}
+</style><style>html:has(body.sheet-open){overflow-y:hidden}
+#sheet-body,#ag-b{min-height:0;overscroll-behavior:contain}.nav-in{min-width:0}.filters{min-width:0}
+@media(max-width:420px){.nav-in{gap:8px}.brand{min-width:0}.win-k{min-width:0}.win{flex-wrap:wrap}}
+</style><link rel="stylesheet" href="css/theme-refinements.css">
+</head>
+<body data-page="tablero">
+<header class="nav"><div class="nav-in">
+  <div class="brand"><span class="mark">GV</span><span class="brand-t">Grupo Vantrel</span></div>
+  <nav class="tabs" id="tabs" aria-label="Secciones"></nav>
+  <div class="filters"><select class="sel" id="f-suc" aria-label="Sucursal"></select><select class="sel" id="f-yr" aria-label="Año"></select><select class="sel" id="f-per" aria-label="Periodo"></select><select class="sel" id="f-cmp" aria-label="Comparar contra"></select></div>
+</div></header>
+<main id="main"></main>
+<footer><span>Grupo Vantrel · Tablero de dirección · Cifras en millones de pesos (MXN)</span><span>Empresa, clientes y cifras ficticios con fines demostrativos</span></footer>
+<div id="scrim"></div>
+<aside id="sheet" aria-label="Detalle"><div class="sheet-bar"><button id="sheet-back">Cerrar</button><button id="sheet-x" aria-label="Cerrar">✕</button></div><div id="sheet-body"></div></aside>
+<script>
+/* ===== MODELO DE DATOS (ficticio, coherente) ===== */
+const MES = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+const Y0 = 2024, NM = 34, LAST = 33; // Ene-2024 .. Oct-2026
+const ix = (y, m) => (y - Y0) * 12 + m;
+const YR = i => Y0 + Math.floor(i / 12);
+const lastMonth = y => y === 2026 ? 9 : 11;
+const mLabel = i => MES[i % 12] + ' ' + String(YR(i)).slice(2);
+let _seed = 20261029;
+const rnd = () => (_seed = (_seed * 1664525 + 1013904223) >>> 0) / 4294967296;
+const jit = a => 1 + (rnd() - 0.5) * 2 * a;
+const lerp = (a, b, t) => a + (b - a) * t;
+const t26 = i => Math.min(1, Math.max(0, (i - 24) / 9));
+const Y24 = i => i < 12, Y26 = i => i >= 24;
+const SEAS = [0.92, 0.95, 1.02, 0.98, 1.03, 1.01, 0.97, 1.00, 1.04, 1.06, 1.03, 0.99];
+
+const SUC = [
+  { id: 'QRO', g24: 0.08, name: 'Querétaro',        base: 16.0, g: 0.18, dso: [55, 50, 36], venc: [15, 6],  dio: [75, 50], oee: [75, 86], scrap: [3.8, 2.0], otd: [90, 97.5], fill: [91.5, 98.2], mAdj: 0.005 },
+  { id: 'SJR', g24: 0.05, name: 'San Juan del Río', base: 9.5,  g: 0.09, dso: [57, 52, 40], venc: [17, 8],  dio: [77, 54], oee: [74, 83], scrap: [4.0, 2.3], otd: [89, 96.4], fill: [90.8, 97.6], mAdj: 0 },
+  { id: 'CEL', g24: 0.07, name: 'Celaya',           base: 7.5,  g: 0.17, dso: [60, 60, 63], venc: [21, 23], dio: [76, 58], oee: [73, 81], scrap: [4.1, 2.4], otd: [88, 95.8], fill: [90.5, 97.0], mAdj: 0 },
+  { id: 'LEO', g24: 0.06, name: 'León',             base: 6.5,  g: 0.12, dso: [62, 56, 41], venc: [19, 9],  dio: [78, 61], oee: [73, 66], scrap: [4.4, 4.6], otd: [88, 91.2], fill: [90.2, 94.1], mAdj: -0.015 },
+];
+const SUCMAP = Object.fromEntries(SUC.map(s => [s.id, s]));
+
+const LINES = [
+  { id: 'INY', g24: 0.06, name: 'Inyección de plástico', share: 0.34, g: 0.14, m25: 0.290, m26: 0.315 },
+  { id: 'EST', g24: 0.05, name: 'Estampado metálico',    share: 0.26, g: 0.06, m25: 0.245, m26: 0.226 },
+  { id: 'CNC', g24: 0.09, name: 'Maquinado CNC',         share: 0.22, g: 0.30, m25: 0.380, m26: 0.405 },
+  { id: 'EMP', g24: 0.06, name: 'Empaque industrial',    share: 0.18, g: 0.10, m25: 0.270, m26: 0.292 },
+];
+const LINEMAP = Object.fromEntries(LINES.map(l => [l.id, l]));
+const LG = LINES.reduce((a, l) => a + l.share * l.g, 0);
+const LG24 = LINES.reduce((a, l) => a + l.share * l.g24, 0);
+
+const PRODS = [
+  { id: 'INY-101', name: 'Carcasa para tablero',  line: 'INY', sh: [0.45, 0.47], dm: 0.010, dioF: 0.85 },
+  { id: 'INY-204', name: 'Clip de sujeción',      line: 'INY', sh: [0.25, 0.22], dm: -0.020, dioF: 1.20 },
+  { id: 'INY-310', name: 'Conector eléctrico',    line: 'INY', sh: [0.30, 0.31], dm: 0.005, dioF: 0.95 },
+  { id: 'EST-120', name: 'Soporte de chasis',     line: 'EST', sh: [0.50, 0.52], dm: 0.010, dioF: 0.90 },
+  { id: 'EST-215', name: 'Bisagra reforzada',     line: 'EST', sh: [0.28, 0.29], dm: -0.005, dioF: 1.15 },
+  { id: 'EST-330', name: 'Placa de anclaje',      line: 'EST', sh: [0.22, 0.19], dm: -0.025, dioF: 1.55 },
+  { id: 'CNC-140', name: 'Buje aeronáutico',      line: 'CNC', sh: [0.30, 0.42], dm: 0.030, dioF: 0.70 },
+  { id: 'CNC-250', name: 'Eje de transmisión',    line: 'CNC', sh: [0.40, 0.33], dm: -0.015, dioF: 1.05 },
+  { id: 'CNC-360', name: 'Brida de precisión',    line: 'CNC', sh: [0.30, 0.25], dm: -0.010, dioF: 0.95 },
+  { id: 'EMP-110', name: 'Charola termoformada',  line: 'EMP', sh: [0.42, 0.43], dm: 0.008, dioF: 0.80 },
+  { id: 'EMP-220', name: 'Contenedor retornable', line: 'EMP', sh: [0.33, 0.35], dm: 0.000, dioF: 1.10 },
+  { id: 'EMP-330', name: 'Separador corrugado',   line: 'EMP', sh: [0.25, 0.22], dm: -0.012, dioF: 1.25 },
+];
+const PRODMAP = Object.fromEntries(PRODS.map(p => [p.id, p]));
+
+const CLIENTS = [
+  { id: 'C01', name: 'Armadora Velcano',                  sec: 'Automotriz',   suc: 'QRO', w: [0.30, 0.27], risk: 0.4, dias: 8 },
+  { id: 'C02', name: 'Aeronáutica Strelia',                       sec: 'Aeroespacial', suc: 'QRO', w: [0.00, 0.14], risk: 0.2, dias: 0, nuevo: true },
+  { id: 'C03', name: 'Autopartes Dornix',                sec: 'Automotriz',   suc: 'QRO', w: [0.24, 0.22], risk: 0.8, dias: 14 },
+  { id: 'C04', name: 'Botanas Crunvel',                sec: 'Alimentos',    suc: 'QRO', w: [0.20, 0.17], risk: 1.3, dias: 22 },
+  { id: 'C05', name: 'Suministros Barvel',             sec: 'Distribución', suc: 'QRO', w: [0.26, 0.20], risk: 1.9, dias: 33 },
+  { id: 'C06', name: 'Motores Ylvara',                  sec: 'Automotriz',   suc: 'SJR', w: [0.40, 0.38], risk: 0.6, dias: 12 },
+  { id: 'C07', name: 'Aerocomponentes Talvio', sec: 'Aeroespacial', suc: 'SJR', w: [0.25, 0.30], risk: 0.4, dias: 6 },
+  { id: 'C08', name: 'Bebidas Ormanza',                  sec: 'Alimentos',    suc: 'SJR', w: [0.35, 0.32], risk: 1.9, dias: 38 },
+  { id: 'C09', name: 'Ensambles Corvaz',                    sec: 'Automotriz',   suc: 'CEL', w: [0.36, 0.32], risk: 0.4, dias: 18 },
+  { id: 'C10', name: 'Alimentos Nerelia',              sec: 'Alimentos',    suc: 'CEL', w: [0.26, 0.24], risk: 0.6, dias: 26 },
+  { id: 'C11', name: 'Ferretera Valdrón',   sec: 'Distribución', suc: 'CEL', w: [0.20, 0.26], risk: 1.9, dias: 97 },
+  { id: 'C12', name: 'Abastos Tervana',                sec: 'Distribución', suc: 'CEL', w: [0.18, 0.18], risk: 1.6, dias: 74 },
+  { id: 'C13', name: 'Lácteos Mirandel',                   sec: 'Alimentos',    suc: 'LEO', w: [0.34, 0.33], risk: 0.6, dias: 11 },
+  { id: 'C14', name: 'Comercial Brevandi',           sec: 'Distribución', suc: 'LEO', w: [0.30, 0.30], risk: 1.6, dias: 31 },
+  { id: 'C15', name: 'Transmisiones Orvek',                  sec: 'Automotriz',   suc: 'LEO', w: [0.36, 0.37], risk: 0.8, dias: 15 },
+];
+const CLIMAP = Object.fromEntries(CLIENTS.map(c => [c.id, c]));
+const SECTORS = ['Automotriz', 'Aeroespacial', 'Alimentos', 'Distribución'];
+
+const VENDORS = [
+  { name: 'Mariana L.',     suc: 'QRO', sh: 0.55, q: 0.97 },
+  { name: 'Jorge T.',     suc: 'QRO', sh: 0.45, q: 1.02 },
+  { name: 'Andrea R.',       suc: 'SJR', sh: 0.52, q: 0.99 },
+  { name: 'Luis M.',      suc: 'SJR', sh: 0.48, q: 1.04 },
+  { name: 'Sofía N.',     suc: 'CEL', sh: 0.58, q: 0.96 },
+  { name: 'Daniel P.',    suc: 'CEL', sh: 0.42, q: 1.03 },
+  { name: 'Fernanda C.', suc: 'LEO', sh: 0.53, q: 1.00 },
+  { name: 'Héctor V.',     suc: 'LEO', sh: 0.47, q: 1.01 },
+];
+
+const SLOW = [
+  { sku: 'EST-330-V1',  name: 'Placa de anclaje v1 (descontinuada)', prod: 'EST-330', suc: 'LEO', dias: 168, valor: 1.42 },
+  { sku: 'EST-215-C14', name: 'Bisagra reforzada calibre 14',        prod: 'EST-215', suc: 'LEO', dias: 142, valor: 0.93 },
+  { sku: 'EMP-220-60L', name: 'Contenedor retornable 60 L',          prod: 'EMP-220', suc: 'CEL', dias: 131, valor: 0.71 },
+  { sku: 'INY-204-A',   name: 'Clip de sujeción serie A',            prod: 'INY-204', suc: 'SJR', dias: 127, valor: 0.58 },
+  { sku: 'EMP-330-3C',  name: 'Separador corrugado 3 capas',         prod: 'EMP-330', suc: 'CEL', dias: 124, valor: 0.49 },
+  { sku: 'CNC-250-L',   name: 'Eje de transmisión largo',            prod: 'CNC-250', suc: 'QRO', dias: 104, valor: 0.62 },
+  { sku: 'INY-310-8P',  name: 'Conector eléctrico 8 pines',          prod: 'INY-310', suc: 'QRO', dias: 96,  valor: 0.44 },
+  { sku: 'EST-120-R',   name: 'Soporte de chasis reforzado',         prod: 'EST-120', suc: 'SJR', dias: 92,  valor: 0.38 },
+];
+const OBSOLETO = { 2024: 9.6, 2025: 8.3 }; // MXN M sin movimiento > 120 días al cierre
+
+const EQUIP = [
+  ['QRO', 'Inyectora I-12 (450 t)', 95, 95, 98.5], ['QRO', 'Centro CNC 5 ejes M-03', 94, 95, 98.5], ['QRO', 'Prensa P-02 (300 t)', 92, 93, 98], ['QRO', 'Termoformadora T-01', 93, 93, 98.3],
+  ['SJR', 'Inyectora I-08 (350 t)', 92, 93, 98], ['SJR', 'Centro CNC M-05', 93, 93, 98.3], ['SJR', 'Prensa P-04 (250 t)', 89, 92, 97.6], ['SJR', 'Línea de empaque E-02', 91, 92, 98],
+  ['CEL', 'Inyectora I-15 (400 t)', 90, 93, 98], ['CEL', 'Prensa P-05 (300 t)', 88, 92, 97.5], ['CEL', 'Termoformadora T-03', 91, 93, 98], ['CEL', 'Torno CNC M-09', 89, 92, 97.7],
+  ['LEO', 'Prensa P-07 (600 t)', 68, 82, 93], ['LEO', 'Prensa P-06 (400 t)', 82, 88, 94], ['LEO', 'Inyectora I-21 (300 t)', 86, 90, 95.5], ['LEO', 'Centro CNC M-11', 85, 89, 95],
+].map(([suc, name, a, p, q]) => ({ suc, name, a, p, q, oee: a * p * q / 10000 }));
+const OEE_META = 85;
+
+/* ---- Series mensuales por sucursal ---- */
+const SALES = {}; // SALES[suc][line][i]
+const M = {};
+SUC.forEach(s => {
+  SALES[s.id] = {};
+  LINES.forEach(l => {
+    SALES[s.id][l.id] = Array.from({ length: NM }, (_, i) => {
+      let v = s.base * l.share * SEAS[i % 12] * jit(0.035);
+      if (Y24(i)) v /= (1 + s.g24) * (1 + l.g24) / (1 + LG24);
+      if (Y26(i)) {
+        const t = (i - 24) / 9;
+        v *= (1 + s.g * (0.6 + 0.8 * t)) * (1 + l.g) / (1 + LG);
+        if (s.id === 'SJR' && i >= 30 && i <= 32) v *= 0.90;
+      }
+      return v;
+    });
+  });
+});
+const lineMargin = (l, s, i) => {
+  if (Y24(i)) return l.m25 - 0.007;
+  if (i < 24) return l.m25;
+  let m = lerp(l.m25, l.m26, Math.min(1, (i - 24) / 5)) + s.mAdj;
+  if (s.id === 'LEO' && l.id === 'EST') m -= 0.02;
+  return m;
+};
+const path = (arr, i, a25 = 1.2) => i < 12 ? arr[0] * jit(a25 / 100) + (a25 ? (rnd() - 0.5) * a25 : 0) : lerp(arr[0], arr[1], t26(i)) * jit(0.006);
+
+SUC.forEach(s => {
+  const m = M[s.id] = { sales: [], cogs: [], budget: [], dso: [], ar: [], venc: [], dio: [], inv: [], dpo: [], ap: [], oee: [], scrap: [], otd: [], fill: [], stockouts: [], units: [], ucost: [], orders: [] };
+  for (let i = 0; i < NM; i++) {
+    let sv = 0, cg = 0;
+    LINES.forEach(l => { const v = SALES[s.id][l.id][i]; sv += v; cg += v * (1 - lineMargin(l, s, i)); });
+    m.sales.push(sv); m.cogs.push(cg);
+    m.budget.push(Y26(i) ? s.base * SEAS[i % 12] * 1.12 : Y24(i) ? null : s.base * SEAS[i % 12] * 0.985);
+  }
+  const tr = (arr, i) => { let n = 0, t = 0; for (let k = Math.max(0, i - 2); k <= i; k++) { t += arr[k]; n++; } return t / n * 3; };
+  for (let i = 0; i < NM; i++) {
+    const a = Y24(i), p = i < 24; // a: 2024, p: antes de 2026
+    const dso = p ? s.dso[0] + (a ? 3 : 0) + 1.5 - ((i % 12) / 11) * 2.5 + (rnd() - 0.5) * 2 : lerp(s.dso[1], s.dso[2], t26(i)) + (rnd() - 0.5) * 1.2;
+    m.dso.push(dso); m.ar.push(dso * tr(m.sales, i) / 90);
+    const venc = p ? s.venc[0] + (a ? 2 : 0) + (rnd() - 0.5) * 2 : lerp(s.venc[0] - 1, s.venc[1], t26(i)) + (rnd() - 0.5) * 0.8;
+    m.venc.push(venc);
+    const dio = p ? s.dio[0] + (a ? 3 : 0) + (rnd() - 0.5) * 3 : lerp(s.dio[0] - 4, s.dio[1], t26(i)) + (rnd() - 0.5) * 1.5;
+    m.dio.push(dio); m.inv.push(dio * tr(m.cogs, i) / 90);
+    const dpo = p ? (a ? 43 : 44) + (rnd() - 0.5) * 2 : lerp(45, 49, t26(i)) + (rnd() - 0.5);
+    m.dpo.push(dpo); m.ap.push(dpo * tr(m.cogs, i) / 90);
+    const oee = p ? s.oee[0] - (a ? 2 : 0) + (rnd() - 0.5) * 3 : lerp(s.oee[0] + 1, s.oee[1], t26(i)) + (rnd() - 0.5) * 1.2;
+    m.oee.push(oee);
+    m.scrap.push(p ? s.scrap[0] + (a ? 0.3 : 0) + (rnd() - 0.5) * 0.4 : lerp(s.scrap[0] - 0.2, s.scrap[1], t26(i)) + (rnd() - 0.5) * 0.2);
+    m.otd.push(p ? s.otd[0] - (a ? 1.5 : 0) + (rnd() - 0.5) * 2 : lerp(s.otd[0] + 1, s.otd[1], t26(i)) + (rnd() - 0.5) * 0.6);
+    m.fill.push(p ? s.fill[0] - (a ? 1 : 0) + (rnd() - 0.5) * 1.5 : lerp(s.fill[0] + 0.5, s.fill[1], t26(i)) + (rnd() - 0.5) * 0.4);
+    const so = (p ? (a ? 16 : 14) : lerp(11, 4.5, t26(i))) * (s.base / 39.5) * (s.id === 'LEO' && !p ? 1.6 : 1) * jit(0.25);
+    m.stockouts.push(Math.max(0, Math.round(so)));
+    const ucost = p ? (a ? 103 : 100) * jit(0.01) : lerp(99, s.id === 'LEO' ? 101.5 : 92.5, t26(i)) * jit(0.004);
+    m.ucost.push(ucost);
+    m.units.push(m.sales[i] * 1e6 / (68 * ucost / 100) / 1000); // miles de piezas
+    m.orders.push(Math.round(m.sales[i] * 1e6 / ((a ? 176000 : p ? 182000 : 196000) * jit(0.03))));
+  }
+});
+
+/* ---- Agregadores ---- */
+const ALL = SUC.map(s => s.id);
+const range = ([a, b]) => Array.from({ length: b - a + 1 }, (_, k) => a + k);
+const MESL = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+function periodOk(y, per, cmp) { const lm = lastMonth(y); if (per === 'YTD') return cmp !== 'prev'; if (per[0] === 'Q') return (+per[1] - 1) * 3 <= lm; if (per[0] === 'M') return +per.slice(1) <= lm; return true; }
+const lastFullQ = y => y === 2026 ? 'Q3' : 'Q4';
+function idxShort(idx) {
+  const a = idx[0], b = idx[idx.length - 1], y = YR(b);
+  if (idx.length === 1) return `${MES[a % 12]} ${y}`;
+  if (idx.length === 3 && a % 3 === 0) return `T${(a % 12) / 3 + 1} ${y}`;
+  return `${MES[a % 12]}–${MES[b % 12]} ${y}`;
+}
+function idxLong(idx) {
+  const a = idx[0], b = idx[idx.length - 1], y = YR(b);
+  if (idx.length === 1) return `${MESL[a % 12]} ${y}`;
+  if (idx.length === 3 && a % 3 === 0) return `el T${(a % 12) / 3 + 1} ${y}`;
+  return `${MES[a % 12].toLowerCase()}–${MES[b % 12].toLowerCase()} ${y}`;
+}
+function period(y, per, cmp = 'yoy') {
+  const lm = lastMonth(y), yp = y - 1; let ms, label, short, vs;
+  if (per === 'YTD') { ms = range([0, lm]); const r = lm === 11 ? 'Ene–Dic' : 'Ene–' + MES[lm]; label = `${r} ${y}`; short = lm === 11 ? 'Año' : r; vs = lm === 11 ? `${yp}` : `${r.toLowerCase()} ${yp}`; }
+  else if (per[0] === 'Q') { const q = +per[1]; ms = range([(q - 1) * 3, Math.min(lm, q * 3 - 1)]); label = `${q}º trimestre ${y}${q * 3 - 1 > lm ? ' (a ' + MESL[lm] + ')' : ''}`; short = `T${q}`; vs = `el T${q} ${yp}`; }
+  else { const k = +per.slice(1); ms = [k]; label = `${cap(MESL[k])} ${y}`; short = cap(MESL[k]); vs = `${MESL[k]} ${yp}`; }
+  const cur = ms.map(k => ix(y, k));
+  let prev = ms.map(k => ix(yp, k)), vsCol = '' + yp, curCol = '' + y;
+  if (cmp === 'prev') { prev = cur.map(i => i - cur.length); vs = idxLong(prev); vsCol = idxShort(prev); curCol = idxShort(cur); }
+  return { y, yp, ms, cur, prev, last: cur[cur.length - 1], lastP: prev[prev.length - 1], label, short, vs, vsCol, curCol, cmp };
+}
+const sum = (ids, key, idxs) => ids.reduce((a, s) => a + idxs.reduce((b, i) => b + (M[s][key][i] || 0), 0), 0);
+const ser = (ids, key) => Array.from({ length: NM }, (_, i) => ids.reduce((a, s) => a + (M[s][key][i] || 0), 0));
+const trail = (ids, key, i) => ids.reduce((a, s) => { let t = 0, n = 0; for (let k = Math.max(0, i - 2); k <= i; k++) { t += M[s][key][k]; n++; } return a + t / n * 3; }, 0);
+const dsoAt = (ids, i) => sum(ids, 'ar', [i]) / (trail(ids, 'sales', i) / 90);
+const dioAt = (ids, i) => sum(ids, 'inv', [i]) / (trail(ids, 'cogs', i) / 90);
+const dpoAt = (ids, i) => sum(ids, 'ap', [i]) / (trail(ids, 'cogs', i) / 90);
+const vencAt = (ids, i) => ids.reduce((a, s) => a + M[s].ar[i] * M[s].venc[i] / 100, 0) / sum(ids, 'ar', [i]) * 100;
+const wavg = (ids, key, idxs, w = 'sales') => { let n = 0, d = 0; ids.forEach(s => idxs.forEach(i => { n += M[s][key][i] * M[s][w][i]; d += M[s][w][i]; })); return n / d; };
+const wavgSer = (ids, key, w = 'sales') => Array.from({ length: NM }, (_, i) => wavg(ids, key, [i], w));
+const totSales = i => ALL.reduce((a, s) => a + M[s].sales[i], 0);
+
+function edr(ids, idxs) {
+  const r = { ventas: 0, costo: 0, gv: 0, adm: 0, dep: 0, fin: 0 };
+  idxs.forEach(i => {
+    const tot = totSales(i);
+    ids.forEach(s => {
+      const sv = M[s].sales[i], sh = sv / tot;
+      r.ventas += sv; r.costo += M[s].cogs[i];
+      r.gv += sv * (Y24(i) ? 0.088 : i < 24 ? 0.086 : 0.080);
+      r.adm += (Y24(i) ? 2.45 : i < 24 ? 2.55 : 2.82) * sh; r.dep += (Y24(i) ? 0.80 : 0.85) * sh; r.fin += (Y24(i) ? 0.66 : i < 24 ? 0.60 : 0.40) * sh;
+    });
+  });
+  return fin(r);
+}
+function edrBudget(ids, idxs) {
+  const r = { ventas: 0, costo: 0, gv: 0, adm: 0, dep: 0, fin: 0 };
+  idxs.forEach(i => {
+    const tb = ALL.reduce((a, s) => a + M[s].budget[i], 0);
+    ids.forEach(s => {
+      const b = M[s].budget[i], sh = b / tb;
+      const y26 = Y26(i); r.ventas += b; r.costo += b * (y26 ? 0.695 : 0.703); r.gv += b * (y26 ? 0.083 : 0.087); r.adm += (y26 ? 2.80 : 2.58) * sh; r.dep += 0.85 * sh; r.fin += (y26 ? 0.45 : 0.60) * sh;
+    });
+  });
+  return fin(r);
+}
+function fin(r) {
+  r.bruta = r.ventas - r.costo; r.ebitda = r.bruta - r.gv - r.adm; r.ebit = r.ebitda - r.dep;
+  r.uai = r.ebit - r.fin; r.isr = Math.max(0, r.uai * 0.30); r.neta = r.uai - r.isr;
+  r.mb = r.bruta / r.ventas * 100; r.me = r.ebitda / r.ventas * 100; r.mn = r.neta / r.ventas * 100;
+  return r;
+}
+const edrSer = (ids, key) => Array.from({ length: NM }, (_, i) => edr(ids, [i])[key]);
+
+/* líneas, productos, clientes */
+const lineSales = (lid, ids, idxs) => ids.reduce((a, s) => a + idxs.reduce((b, i) => b + SALES[s][lid][i], 0), 0);
+const lineSer = (lid, ids) => Array.from({ length: NM }, (_, i) => lineSales(lid, ids, [i]));
+const lineMarg = (lid, ids, idxs) => { let v = 0, c = 0; ids.forEach(s => idxs.forEach(i => { const x = SALES[s][lid][i]; v += x; c += x * (1 - lineMargin(LINEMAP[lid], SUCMAP[s], i)); })); return (1 - c / v) * 100; };
+const prodSer = (pid, ids) => { const p = PRODMAP[pid]; return Array.from({ length: NM }, (_, i) => ids.reduce((a, s) => a + SALES[s][p.line][i] * p.sh[i < 24 ? 0 : 1], 0)); };
+const prodSales = (pid, ids, idxs) => { const s = prodSer(pid, ids); return idxs.reduce((a, i) => a + s[i], 0); };
+const prodMarg = (pid, ids, idxs) => lineMarg(PRODMAP[pid].line, ids, idxs) + PRODMAP[pid].dm * 100 * (idxs[0] >= 24 ? 1 : 0.8);
+const prodDio = (pid, ids, i) => dioAt(ids, i) * PRODMAP[pid].dioF;
+const wsum = (sucId, y) => CLIENTS.filter(c => c.suc === sucId).reduce((a, c) => a + c.w[y], 0);
+const cliSer = cid => { const c = CLIMAP[cid]; return Array.from({ length: NM }, (_, i) => { const y = i < 24 ? 0 : 1; return M[c.suc].sales[i] * c.w[y] / wsum(c.suc, y); }); };
+const cliSales = (cid, idxs) => { const s = cliSer(cid); return idxs.reduce((a, i) => a + s[i], 0); };
+function cliAR(cid, i) {
+  const c = CLIMAP[cid], y = i < 24 ? 0 : 1, peers = CLIENTS.filter(x => x.suc === c.suc);
+  const wr = peers.reduce((a, x) => a + x.w[y] * (0.6 + 0.4 * x.risk), 0);
+  const saldo = M[c.suc].ar[i] * c.w[y] * (0.6 + 0.4 * c.risk) / wr;
+  const vr = peers.reduce((a, x) => a + x.w[y] * (0.6 + 0.4 * x.risk) * x.risk, 0) / wr;
+  const vencPct = Math.min(0.92, (M[c.suc].venc[i] / 100) * c.risk / vr);
+  return { saldo, venc: saldo * vencPct, pct: vencPct * 100, dias: y ? c.dias : Math.round(c.dias * (Y24(i) ? 0.7 : 0.8) + 6) };
+}
+const AGING_BUCKETS = ['Al corriente', '1–30 días', '31–60 días', '61–90 días', '+90 días'];
+function agingSuc(sid, i) {
+  const ar = M[sid].ar[i], v = M[sid].venc[i] / 100;
+  const split = v > 0.15 ? [0.28, 0.24, 0.20, 0.28] : [0.48, 0.26, 0.14, 0.12];
+  return [ar * (1 - v), ...split.map(x => ar * v * x)];
+}
+/* capital de trabajo */
+const wcAt = (ids, i) => sum(ids, 'ar', [i]) + sum(ids, 'inv', [i]) - sum(ids, 'ap', [i]);
+function liberado(ids, i, iPrev) {
+  const s = trail(ids, 'sales', i) / 90, c = trail(ids, 'cogs', i) / 90;
+  return (dsoAt(ids, iPrev) - dsoAt(ids, i)) * s + (dioAt(ids, iPrev) - dioAt(ids, i)) * c + (dpoAt(ids, i) - dpoAt(ids, iPrev)) * c;
+}
+function cfoSer(ids) {
+  return Array.from({ length: NM }, (_, i) => {
+    const e = edr(ids, [i]);
+    const d = k => i === 0 ? 0 : sum(ids, k, [i]) - sum(ids, k, [i - 1]);
+    return e.ebitda - e.isr - d('ar') - d('inv') + d('ap');
+  });
+}
+if (typeof module !== 'undefined') module.exports = { M, SUC, edr, edrBudget, dsoAt, dioAt, dpoAt, vencAt, wavg, liberado, cliAR, cliSales, CLIENTS, ALL, range, period, ix, sum, lineMarg, LINES, wcAt, cfoSer, EQUIP };
+
+/* ===== INTERFAZ ===== */
+const state = { tab: 'resumen', suc: 'ALL', year: 2026, per: 'YTD', cmp: 'yoy' };
+const TABS = [['resumen', 'Resumen'], ['ventas', 'Ventas'], ['cobranza', 'Cobranza'], ['inventario', 'Inventario'], ['produccion', 'Producción'], ['edr', 'Resultados'], ['flujo', 'Flujo']];
+const C = { blue: '#0071e3', blueSoft: 'rgba(0,113,227,.12)', gray: '#c7c7cc', gray2: '#e5e5ea', ink: '#1d1d1f', fg2: '#6e6e73', green: '#30a14e', red: '#e0352b', orange: '#f08c00', teal: '#5ac8fa', indigo: '#5e5ce6' };
+const SUC_COL = { QRO: '#0071e3', SJR: '#5e5ce6', CEL: '#e0352b', LEO: '#f08c00' };
+
+/* formato */
+const nf = (v, d = 1) => v.toLocaleString('es-MX', { minimumFractionDigits: d, maximumFractionDigits: d });
+const $M = (v, d = 1) => (v < 0 ? '−$' : '$') + nf(Math.abs(v), d) + ' M';
+const pct = (v, d = 1) => nf(v, d) + '%';
+const esc = s => String(s).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
+function delta(v, { unit = '%', good = 'up', d = 1, suffix = '' } = {}) {
+  if (!isFinite(v)) return '';
+  const up = v >= 0, isGood = good === 'up' ? up : !up;
+  const neutral = Math.abs(v) < 0.05;
+  const cls = neutral ? 'flat' : isGood ? 'good' : 'bad';
+  const arrow = neutral ? '–' : up ? '▲' : '▼';
+  const u = unit === '%' ? '%' : unit === 'pts' ? ' pts' : ' ' + (unit === 'días' && Math.round(Math.abs(v)) === 1 ? 'día' : unit);
+  return `<span class="delta ${cls}">${arrow} ${nf(Math.abs(v), d)}${u}${suffix ? ' ' + suffix : ''}</span>`;
+}
+const growth = (a, b) => (a / b - 1) * 100;
+
+function ctx() {
+  const P = period(state.year, state.per, state.cmp);
+  const ids = state.suc === 'ALL' ? ALL : [state.suc];
+  return { P, ids, cur: P.cur, prev: P.prev, last: P.last, lastP: P.lastP, Y: P.y, YP: P.yp, vsCol: P.vsCol, curCol: P.curCol, scope: state.suc === 'ALL' ? 'Consolidado' : SUCMAP[state.suc].name };
+}
+
+/* sparkline svg */
+function spark(cur, prev) { return '';
+  const all = [...cur, ...prev].filter(v => v != null), mn = Math.min(...all), mx = Math.max(...all), rg = (mx - mn) || 1;
+  const W = 120, H = 34, pt = (arr) => arr.map((v, i) => `${(i / (arr.length - 1)) * W},${H - 3 - ((v - mn) / rg) * (H - 6)}`).join(' ');
+  return `<svg class="spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><polyline points="${pt(prev)}" fill="none" stroke="${C.gray}" stroke-width="1.6" vector-effect="non-scaling-stroke"/><polyline points="${pt(cur)}" fill="none" stroke="${C.blue}" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>`;
+}
+const yr = s => { const c = ctx(), n = lastMonth(c.Y) + 1; return [s.slice(ix(c.Y, 0), ix(c.Y, 0) + n), s.slice(ix(c.YP, 0), ix(c.YP, 0) + n)]; };
+const yearData = (arr, y) => MES.map((_, k) => k <= lastMonth(y) ? arr[ix(y, k)] : null);
+const perCols = (c, on, off) => MES.map((_, k) => c.P.ms.includes(k) ? on : off);
+const cierre = i => `${cap(MESL[i % 12])} ${YR(i)}`;
+function monthBars(scope, id, arr, fmt = v => $M(v)) {
+  const c = ctx();
+  mk(scope, id, { type: 'bar', data: { labels: MES, datasets: [
+    { label: '' + c.Y, data: yearData(arr, c.Y), backgroundColor: perCols(c, C.blue, 'rgba(0,113,227,.28)'), borderRadius: 5, categoryPercentage: 0.7 },
+    { label: '' + c.YP, data: yearData(arr, c.YP), backgroundColor: perCols(c, C.gray, C.gray2), borderRadius: 5, categoryPercentage: 0.7 }] },
+    options: baseOpts({ plugins: { legend: { display: false }, tooltip: tip(v => v == null ? '—' : fmt(v)) } }) });
+}
+function kpi(label, value, deltaHtml, sub = '', sp = '', go = '') {
+  return `<div class="kpi card ${go ? 'go' : ''}" ${go ? `data-kpi="${go}" role="button" tabindex="0" title="Ver detalle"` : ''}>${go ? '<span class="kpi-go">›</span>' : ''}<div class="kpi-label">${label}</div><div class="kpi-value">${value}</div><div class="kpi-foot">${deltaHtml}<span class="kpi-sub">${sub}</span></div>${sp}</div>`;
+}
+
+/* charts */
+const charts = { main: [], sheet: [] };
+function mk(scope, id, cfg) {
+  const el = document.getElementById(id); if (!el) return;
+  const ch = new Chart(el, cfg); charts[scope].push(ch); return ch;
+}
+function killCharts(scope) { charts[scope].forEach(c => c.destroy()); charts[scope] = []; }
+const moneyTick = v => '$' + nf(v, 0);
+const baseOpts = (extra = {}) => Object.assign({
+  responsive: true, maintainAspectRatio: false, animation: { duration: 600, easing: 'easeOutQuart' },
+  interaction: { mode: 'index', intersect: false },
+  plugins: { legend: { display: false }, tooltip: tip() },
+  scales: {
+    x: { grid: { display: false }, border: { display: false }, ticks: { color: '#86868b', font: { size: 11 } } },
+    y: { grid: { color: 'rgba(0,0,0,.06)' }, border: { display: false }, ticks: { color: '#86868b', font: { size: 11 }, maxTicksLimit: 5 } },
+  },
+}, extra);
+function tip(fmt) {
+  return {
+    backgroundColor: 'rgba(29,29,31,.92)', padding: 12, cornerRadius: 12, titleFont: { weight: '600', size: 12 }, bodyFont: { size: 12 }, boxPadding: 4, usePointStyle: true,
+    callbacks: fmt ? { label: ctx => ` ${ctx.dataset.label}: ${fmt(ctx.parsed.y ?? ctx.parsed.x, ctx)}` } : undefined,
+  };
+}
+const clickable = (keys, fn) => ({
+  onClick: (e, els) => { if (els.length) fn(keys[els[0].index]); },
+  onHover: (e, els) => { e.native.target.style.cursor = els.length ? 'pointer' : 'default'; },
+});
+const legend = items => `<div class="legend">${items.map(([c, l, dash]) => `<span><i style="background:${dash ? 'none' : c};${dash ? `border-top:2px dashed ${c};height:0;border-radius:0` : ''}"></i>${l}</span>`).join('')}</div>`;
+
+function salesChart(scope, id, ids, { budget = true, height } = {}) {
+  const c = ctx(), s = ser(ids, 'sales'), b = ser(ids, 'budget');
+  const ds = [
+    { type: 'bar', label: '' + c.Y, data: yearData(s, c.Y), backgroundColor: perCols(c, C.blue, 'rgba(0,113,227,.28)'), borderRadius: 6, barPercentage: 0.72, categoryPercentage: 0.7, order: 2 },
+    { type: 'bar', label: '' + c.YP, data: yearData(s, c.YP), backgroundColor: perCols(c, C.gray, C.gray2), borderRadius: 6, barPercentage: 0.72, categoryPercentage: 0.7, order: 3 },
+  ];
+  const bud = yearData(b, c.Y);
+  if (budget) ds.push({ type: 'line', label: 'Presupuesto', data: bud, borderColor: C.ink, borderDash: [5, 4], borderWidth: 1.5, pointRadius: 0, tension: 0.3, order: 1 });
+  mk(scope, id, { data: { labels: MES, datasets: ds }, options: baseOpts({ plugins: { legend: { display: false }, tooltip: tip(v => v == null ? '—' : $M(v)) }, scales: { x: baseOpts().scales.x, y: { ...baseOpts().scales.y, ticks: { ...baseOpts().scales.y.ticks, callback: moneyTick } } } }) });
+}
+function trendChart(scope, id, series, { fmt = v => nf(v), meta, metaLabel = 'Meta', min, max } = {}) {
+  const labels = Array.from({ length: NM }, (_, i) => mLabel(i));
+  const ds = series.map(s => ({ label: s.label, data: s.data, borderColor: s.color, backgroundColor: s.fill || 'transparent', fill: !!s.fill, borderWidth: s.w || 2.2, pointRadius: 0, pointHoverRadius: 4, tension: 0.35 }));
+  if (meta != null) ds.push({ label: metaLabel, data: labels.map(() => meta), borderColor: C.ink, borderDash: [5, 4], borderWidth: 1.2, pointRadius: 0 });
+  const o = baseOpts({ plugins: { legend: { display: false }, tooltip: tip(fmt) } });
+  o.scales.y.ticks.callback = v => fmt(v); if (min != null) o.scales.y.min = min; if (max != null) o.scales.y.max = max;
+  o.scales.x.ticks.maxTicksLimit = 8; o.scales.x.ticks.autoSkip = true;
+  mk(scope, id, { type: 'line', data: { labels, datasets: ds }, options: o });
+}
+
+/* ===== ALERTAS ===== */
+function computeAlerts() {
+  const L = LAST, A = [], YTD26 = period(2026, 'YTD');
+  const others = ALL.filter(s => s !== 'CEL'), vCel = vencAt(['CEL'], L), vOth = vencAt(others, L);
+  const c11 = cliAR('C11', L), c12 = cliAR('C12', L), vencCel$ = M.CEL.ar[L] * M.CEL.venc[L] / 100;
+  A.push({ sev: 'alta', area: 'Cobranza', suc: 'CEL', title: `Celaya tiene ${nf(vCel, 0)}% de su cartera vencida, ${nf(vCel / vOth, 1)} veces más que el resto de las sucursales.`, sub: `${$M(vencCel$)} vencidos. Dos distribuidores concentran el ${nf((c11.venc + c12.venc) / vencCel$ * 100, 0)}% del problema.`, go: () => goTo('cobranza', { suc: 'ALL', year: 2026 }, () => openDetail('suc', 'CEL', true)) });
+  const g11 = growth(cliSales('C11', YTD26.cur), cliSales('C11', YTD26.prev));
+  A.push({ sev: 'alta', area: 'Cobranza', suc: 'CEL', title: `Ferretera Valdrón debe ${$M(c11.venc)} con ${c11.dias} días de atraso.`, sub: `Sus compras crecieron ${nf(g11, 0)}% este año, pero ese crecimiento se dio a crédito.`, go: () => goTo('cobranza', { suc: 'ALL', year: 2026 }, () => openDetail('cli', 'C11', true)) });
+  const leo = M.LEO.oee[L];
+  A.push({ sev: 'alta', area: 'Producción', suc: 'LEO', title: `La planta León opera al ${nf(leo, 0)}% de eficiencia (OEE), ${nf(OEE_META - leo, 0)} puntos debajo de la meta.`, sub: `La prensa P-07 está al ${nf(EQUIP.find(e => e.name.startsWith('Prensa P-07')).oee, 0)}% y el scrap de la planta subió a ${pct(M.LEO.scrap[L])}.`, go: () => goTo('produccion', { suc: 'ALL', year: 2026 }, () => openDetail('planta', 'LEO', true)) });
+  const q = period(2026, 'Q3').cur, sq = edr(['SJR'], q).ventas, bq = edrBudget(['SJR'], q).ventas;
+  A.push({ sev: 'media', area: 'Ventas', suc: 'SJR', title: `San Juan del Río quedó ${nf(Math.abs(growth(sq, bq)), 0)}% abajo del presupuesto en el 3er trimestre.`, sub: `Faltaron ${$M(bq - sq)} frente a la meta. Es la única sucursal que no alcanza el presupuesto del año.`, go: () => goTo('ventas', { suc: 'ALL', year: 2026, per: 'Q3' }, () => openDetail('suc', 'SJR', true)) });
+  const slow = SLOW.filter(x => x.dias > 120), sv = slow.reduce((a, x) => a + x.valor, 0);
+  A.push({ sev: 'media', area: 'Inventario', suc: null, title: `${slow.length} productos llevan más de 120 días sin moverse.`, sub: `${$M(sv)} de inventario detenido; 4 de ellos están en León y Celaya.`, go: () => goTo('inventario', { suc: 'ALL', year: 2026 }, () => flash('slow')) });
+  const mE = lineMarg('EST', ALL, YTD26.cur), mE0 = lineMarg('EST', ALL, YTD26.prev);
+  A.push({ sev: 'media', area: 'Rentabilidad', suc: 'LEO', title: `El margen de Estampado metálico bajó ${nf(mE0 - mE, 1)} puntos frente a 2025.`, sub: `Es la única línea con margen a la baja, por el costo del acero y el scrap en León.`, go: () => goTo('edr', { suc: 'ALL', year: 2026 }, () => openDetail('linea', 'EST', true)) });
+  return A;
+}
+let ALERTS = [];
+function alertCard(a, i) {
+  return `<button class="alert" data-alert="${i}"><span class="sev ${a.sev}"></span><span class="alert-body"><span class="alert-meta">${a.area} · ${a.sev === 'alta' ? 'Prioridad alta' : 'Atención'}</span><span class="alert-title">${esc(a.title)}</span><span class="alert-sub">${esc(a.sub)}</span></span><span class="chev">›</span></button>`;
+}
+
+/* ===== NAVEGACIÓN ===== */
+function goTo(tab, patch = {}, after) {
+  Object.assign(state, patch); if (!periodOk(state.year, state.per, state.cmp)) state.per = state.cmp === 'prev' ? lastFullQ(state.year) : 'YTD'; setTab(tab, true);
+  if (after) setTimeout(after, 120);
+}
+function setTab(tab, force) {
+  if (!TABS.find(t => t[0] === tab)) tab = 'resumen';
+  const changed = state.tab !== tab; state.tab = tab;
+  if (location.hash.slice(1) !== tab) { try { history.replaceState(null, '', '#' + tab); } catch (e) { location.hash = tab; } }
+  if (changed || force) { render(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+}
+function flash(id, cls = 'flash') {
+  const el = document.getElementById(id); if (!el) return;
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  el.classList.remove('flash', 'flash-b'); void el.offsetWidth; el.classList.add(cls);
+}
+function goKpi(spec) { const [tab, id] = spec.split(':'); if (tab === state.tab) flash(id, 'flash-b'); else goTo(tab, {}, () => flash(id, 'flash-b')); }
+
+function renderNav() {
+  document.getElementById('tabs').innerHTML = TABS.map(([k, l]) => `<button class="tab ${state.tab === k ? 'on' : ''}" data-tab="${k}">${l}</button>`).join('');
+  document.getElementById('f-suc').value = state.suc; document.getElementById('f-yr').value = state.year; document.getElementById('f-cmp').value = state.cmp; fillPer(); document.getElementById('f-per').value = state.per;
+  const on = document.querySelector('.tab.on'); if (on) on.scrollIntoView({ block: 'nearest', inline: 'center' });
+}
+function render() {
+  killCharts('main'); renderNav();
+  const el = document.getElementById('main');
+  el.classList.remove('reveal'); void el.offsetWidth; el.classList.add('reveal');
+  ({ resumen: renderResumen, ventas: renderVentas, cobranza: renderCobranza, inventario: renderInventario, produccion: renderProduccion, edr: renderEdr, flujo: renderFlujo })[state.tab](el);
+}
+const head = (eyebrow, title, lede) => `<section class="head"><div class="eyebrow">${eyebrow}</div><h1>${title}</h1>${lede ? `<p class="lede">${lede}</p>` : ''}</section>`;
+const card = (title, body, { span = 6, sub = '', id = '', cls = '' } = {}) => `<div class="card span-${span} ${cls}" ${id ? `id="${id}"` : ''}><div class="card-head"><h3>${title}</h3>${sub ? `<span class="card-sub">${sub}</span>` : ''}</div>${body}</div>`;
+const box = (id, h = 260) => `<div class="chart" style="height:${h}px"><canvas id="${id}"></canvas></div>`;
+const hint = '<span class="hint">Toca para ver el detalle</span>';
+
+/* ===== RESUMEN ===== */
+function renderResumen(el) {
+  const c = ctx(), e = edr(c.ids, c.cur), ep = edr(c.ids, c.prev);
+  const dso = dsoAt(c.ids, c.last), dsoP = dsoAt(c.ids, c.lastP), dio = dioAt(c.ids, c.last), dioP = dioAt(c.ids, c.lastP);
+  const oee = wavg(c.ids, 'oee', c.cur), oeeP = wavg(c.ids, 'oee', c.prev), otd = wavg(c.ids, 'otd', c.cur), otdP = wavg(c.ids, 'otd', c.prev);
+  const lib = liberado(c.ids, c.last, c.lastP), g = growth(e.ventas, ep.ventas), ge = growth(e.ebitda, ep.ebitda);
+  const title = state.suc === 'ALL' ? 'Resumen del periodo.' : `${c.scope}: resumen del periodo.`;
+  const lede = `Ventas ${g >= 0 ? '+' : ''}${nf(g, 1)}%, EBITDA ${ge >= 0 ? '+' : ''}${nf(ge, 0)}% y ${$M(lib, 0)} de efectivo liberado frente a${c.P.vs.startsWith('el ') ? 'l ' + c.P.vs.slice(3) : ' ' + c.P.vs}.`;
+  const S = k => yr(ser(c.ids, k)), mS = yr(edrSer(c.ids, 'mb')), eS = yr(edrSer(c.ids, 'ebitda')), nS = yr(edrSer(c.ids, 'neta'));
+  const dsoS = yr(Array.from({ length: NM }, (_, i) => dsoAt(c.ids, i))), dioS = yr(Array.from({ length: NM }, (_, i) => dioAt(c.ids, i)));
+  const oS = yr(wavgSer(c.ids, 'oee')), tS = yr(wavgSer(c.ids, 'otd'));
+  const vs = `vs ${c.P.vs.replace(/^el /, '')}`;
+  const alerts = ALERTS.map((a, i) => [a, i]).filter(([a]) => state.suc === 'ALL' || !a.suc || a.suc === state.suc);
+  const aero = cliSales('C02', c.cur), gCnc = growth(lineSales('CNC', c.ids, c.cur), lineSales('CNC', c.ids, c.prev));
+  const best = ALL.map(s => [s, growth(edr([s], c.cur).ventas, edr([s], c.prev).ventas)]).sort((a, b) => b[1] - a[1])[0];
+  el.innerHTML = `
+  ${head(`Resumen ejecutivo · ${c.P.label} · ${c.scope}`, title, lede)}
+  <div class="kpis">
+    ${kpi('Ventas', $M(e.ventas), delta(g), vs, spark(...S('sales')), 'ventas:k-ventas')}
+    ${kpi('Margen bruto', pct(e.mb), delta(e.mb - ep.mb, { unit: 'pts' }), vs, spark(...mS), 'edr:k-margen')}
+    ${kpi('EBITDA', $M(e.ebitda), delta(ge), `margen ${pct(e.me)}`, spark(...eS), 'edr:k-ebitda')}
+    ${kpi('Utilidad neta', $M(e.neta), delta(growth(e.neta, ep.neta)), vs, spark(...nS), 'edr:k-edr')}
+    ${kpi('Días de cobro', nf(dso, 0) + ' días', delta(dso - dsoP, { unit: 'días', good: 'down', d: 0 }), vs, spark(...dsoS), 'cobranza:k-dso')}
+    ${kpi('Días de inventario', nf(dio, 0) + ' días', delta(dio - dioP, { unit: 'días', good: 'down', d: 0 }), vs, spark(...dioS), 'inventario:k-dio')}
+    ${kpi('Eficiencia de planta (OEE)', pct(oee), delta(oee - oeeP, { unit: 'pts' }), `meta ${OEE_META}%`, spark(...oS), 'produccion:k-oee')}
+    ${kpi('Entregas a tiempo', pct(otd), delta(otd - otdP, { unit: 'pts' }), vs, spark(...tS), 'produccion:k-otd')}
+  </div>
+  <div class="grid">
+    ${card('Áreas de oportunidad', alerts.length ? `<div class="alerts">${alerts.map(([a, i]) => alertCard(a, i)).join('')}</div>` : '<p class="muted">Sin alertas para esta sucursal.</p>', { span: 7, sub: `Situación actual · ${alerts.length} focos rojos` })}
+    ${card('Logros del periodo', `<div class="wins">
+      ${aero < 0.05 ? '' : `<button class="win" data-open="cli:C02"><span class="win-k">${$M(aero)}</span><span class="win-t">Aeronáutica Strelia, cliente nuevo del sector aeroespacial, ya está entre los principales de Querétaro.</span><span class="chev">›</span></button>`}
+      <button class="win" data-open="linea:CNC"><span class="win-k">+${nf(gCnc, 0)}%</span><span class="win-t">Maquinado CNC es la línea con mayor crecimiento y mejor margen.</span><span class="chev">›</span></button>
+      <button class="win" data-open="suc:${best[0]}"><span class="win-k">+${nf(best[1], 0)}%</span><span class="win-t">${SUCMAP[best[0]].name} es la sucursal con mayor crecimiento en ventas.</span><span class="chev">›</span></button>
+      <button class="win" data-go="flujo"><span class="win-k">${$M(lib, 0)}</span><span class="win-t">Efectivo liberado por menores días de cobro e inventario.</span><span class="chev">›</span></button>
+    </div>`, { span: 5 })}
+    ${card('Ventas mensuales', legend([[C.blue, '' + c.Y], [C.gray2, '' + c.YP], [C.ink, 'Presupuesto', 1]]) + box('ch-sales', 280), { span: 12, sub: 'Millones de pesos' })}
+    ${card('Tablero por sucursal', scoreTable(c), { span: 12, sub: hint })}
+  </div>`;
+  salesChart('main', 'ch-sales', c.ids);
+}
+function dot(level) { return `<i class="dot ${level}"></i>`; }
+function scoreTable(c) {
+  const rows = ALL.map(s => {
+    const e = edr([s], c.cur), ep = edr([s], c.prev), b = edrBudget([s], c.cur);
+    const dso = dsoAt([s], c.last), venc = vencAt([s], c.last), dio = dioAt([s], c.last), oee = wavg([s], 'oee', c.cur);
+    const vb = growth(e.ventas, b.ventas);
+    return `<tr class="click ${state.suc === s ? 'sel' : ''}" data-open="suc:${s}">
+      <td><b>${SUCMAP[s].name}</b></td><td class="r">${$M(e.ventas)}</td><td class="r">${delta(growth(e.ventas, ep.ventas))}</td>
+      <td class="r">${dot(vb >= 0 ? 'g' : vb > -3 ? 'y' : 'r')}${vb >= 0 ? '+' : ''}${nf(vb)}%</td><td class="r hide-s">${pct(e.mb)}</td>
+      <td class="r">${dot(dso <= 45 ? 'g' : dso <= 55 ? 'y' : 'r')}${nf(dso, 0)}</td><td class="r">${dot(venc <= 10 ? 'g' : venc <= 15 ? 'y' : 'r')}${pct(venc, 0)}</td>
+      <td class="r hide-s">${dot(dio <= 55 ? 'g' : dio <= 65 ? 'y' : 'r')}${nf(dio, 0)}</td><td class="r">${dot(oee >= 80 ? 'g' : oee >= 72 ? 'y' : 'r')}${pct(oee, 0)}</td><td class="chev-c">›</td></tr>`;
+  }).join('');
+  return `<div class="table-wrap"><table><thead><tr><th>Sucursal</th><th class="r">Ventas</th><th class="r">vs ${c.vsCol}</th><th class="r">vs presupuesto</th><th class="r hide-s">Margen</th><th class="r">Días cobro</th><th class="r">Vencido</th><th class="r hide-s">Días inv.</th><th class="r">OEE</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
+/* ===== VENTAS ===== */
+function renderVentas(el) {
+  const c = ctx(), e = edr(c.ids, c.cur), ep = edr(c.ids, c.prev), b = edrBudget(c.ids, c.cur);
+  const ord = sum(c.ids, 'orders', c.cur), ordP = sum(c.ids, 'orders', c.prev), tk = e.ventas * 1e6 / ord, tkP = ep.ventas * 1e6 / ordP;
+  const g = growth(e.ventas, ep.ventas), vb = growth(e.ventas, b.ventas);
+  const lines = LINES.map(l => ({ l, v: lineSales(l.id, c.ids, c.cur), p: lineSales(l.id, c.ids, c.prev) })).sort((a, b) => b.v - a.v);
+  const topLine = [...lines].sort((a, b) => growth(b.v, b.p) - growth(a.v, a.p))[0];
+  const lede = `Las ventas suman ${$M(e.ventas)}, ${nf(g, 1)}% más que ${c.P.vs} y ${vb >= 0 ? nf(vb, 1) + '% arriba' : nf(-vb, 1) + '% abajo'} del presupuesto. ${topLine.l.name} lidera el crecimiento con +${nf(growth(topLine.v, topLine.p), 0)}%.`;
+  const cl = CLIENTS.filter(x => c.ids.includes(x.suc)).map(x => ({ x, v: cliSales(x.id, c.cur), p: cliSales(x.id, c.prev) })).sort((a, b) => b.v - a.v);
+  const sec = SECTORS.map(s => ({ s, v: cl.filter(k => k.x.sec === s).reduce((a, k) => a + k.v, 0), p: cl.filter(k => k.x.sec === s).reduce((a, k) => a + k.p, 0) }));
+  const vend = VENDORS.filter(v => c.ids.includes(v.suc)).map(v => { const sv = sum([v.suc], 'sales', c.cur) * v.sh, q = edrBudget([v.suc], c.cur).ventas * v.sh * v.q; return { v, sv, q, at: sv / q * 100 }; }).sort((a, b) => b.at - a.at);
+  el.innerHTML = `
+  ${head(`Ventas · ${c.P.label} · ${c.scope}`, 'Desempeño comercial.', lede)}
+  <div class="kpis k4">
+    ${kpi('Ventas', $M(e.ventas), delta(g), `vs ${c.P.vs.replace(/^el /, '')}`, '', 'ventas:k-ventas')}
+    ${kpi('Cumplimiento de presupuesto', pct(e.ventas / b.ventas * 100), delta(vb, { suffix: '' }), `meta ${$M(b.ventas)}`, '', 'ventas:k-ventas')}
+    ${kpi('Pedidos', nf(ord, 0), delta(growth(ord, ordP)), 'facturados', '', 'ventas:k-cli')}
+    ${kpi('Ticket promedio', '$' + nf(tk / 1000, 0) + ' mil', delta(growth(tk, tkP)), 'por pedido', '', 'ventas:k-cli')}
+  </div>
+  <div class="grid">
+    ${card('Ventas mensuales vs presupuesto', legend([[C.blue, '' + c.Y], [C.gray2, '' + c.YP], [C.ink, 'Presupuesto', 1]]) + box('ch-v1', 280), { span: 12, sub: 'Millones de pesos', id: 'k-ventas' })}
+    ${card('Por sucursal', legend([[C.blue, c.curCol], [C.gray2, c.vsCol]]) + box('ch-v2', 230), { span: 6, sub: hint })}
+    ${card('Por línea de producto', legend([[C.blue, c.curCol], [C.gray2, c.vsCol]]) + box('ch-v3', 230), { span: 6, sub: hint })}
+    ${card('Por sector de cliente', `<div class="bars">${sec.map(s => { const mx = Math.max(...sec.map(k => k.v)); return `<div class="bar-row"><span class="bar-l">${s.s}</span><span class="bar-t"><span style="width:${s.v / mx * 100}%"></span></span><span class="bar-v">${$M(s.v)} ${delta(growth(s.v, s.p) || 0)}</span></div>`; }).join('')}</div><p class="note">Aeroespacial pasó de ser un nicho a un motor de crecimiento con la entrada de Aeronáutica Strelia.</p>`, { span: 5 })}
+    ${card('Clientes principales', `<div class="table-wrap"><table><thead><tr><th>Cliente</th><th class="hide-s">Sector</th><th class="r">Ventas</th><th class="r">vs ${c.vsCol}</th><th class="r hide-s">Participación</th><th></th></tr></thead><tbody>${cl.slice(0, 8).map(k => `<tr class="click" data-open="cli:${k.x.id}"><td><b>${esc(k.x.name)}</b>${k.x.nuevo ? ' <span class="tag new">Nuevo</span>' : ''}<div class="muted s">${SUCMAP[k.x.suc].name}</div></td><td class="hide-s">${k.x.sec}</td><td class="r">${$M(k.v)}</td><td class="r">${k.p > 0.01 ? delta(growth(k.v, k.p)) : '<span class="delta good">Nuevo</span>'}</td><td class="r hide-s">${pct(k.v / e.ventas * 100)}</td><td class="chev-c">›</td></tr>`).join('')}</tbody></table></div>`, { span: 7, sub: hint, id: 'k-cli' })}
+    ${card('Fuerza de ventas', `<div class="table-wrap"><table><thead><tr><th>Vendedor</th><th class="hide-s">Sucursal</th><th class="r">Ventas</th><th class="r hide-s">Cuota</th><th style="width:34%">Cumplimiento</th></tr></thead><tbody>${vend.map(k => `<tr><td><b>${k.v.name}</b></td><td class="hide-s">${SUCMAP[k.v.suc].name}</td><td class="r">${$M(k.sv)}</td><td class="r hide-s">${$M(k.q)}</td><td><div class="prog"><span class="${k.at >= 100 ? 'g' : k.at >= 95 ? 'y' : 'r'}" style="width:${Math.min(100, k.at)}%"></span></div><span class="prog-v">${pct(k.at, 0)}</span></td></tr>`).join('')}</tbody></table></div>`, { span: 12 })}
+  </div>`;
+  salesChart('main', 'ch-v1', c.ids);
+  const sv = ALL.map(s => sum([s], 'sales', c.cur)), sp = ALL.map(s => sum([s], 'sales', c.prev));
+  const hb = (id, labels, a, b, keys, fn) => mk('main', id, { type: 'bar', data: { labels, datasets: [{ label: c.curCol, data: a, backgroundColor: keys.map(k => state.suc === 'ALL' || k === state.suc || fn !== openSuc ? C.blue : 'rgba(0,113,227,.25)'), borderRadius: 6, barPercentage: 0.8, categoryPercentage: 0.7 }, { label: c.vsCol, data: b, backgroundColor: C.gray2, borderRadius: 6, barPercentage: 0.8, categoryPercentage: 0.7 }] }, options: { ...baseOpts({ indexAxis: 'y', plugins: { legend: { display: false }, tooltip: tip(v => $M(v)) } }), scales: { x: { grid: { color: 'rgba(0,0,0,.06)' }, border: { display: false }, ticks: { color: '#86868b', callback: moneyTick, maxTicksLimit: 5 } }, y: { grid: { display: false }, border: { display: false }, ticks: { color: '#1d1d1f', font: { size: 12, weight: '500' } } } }, ...clickable(keys, fn) } });
+  hb('ch-v2', ALL.map(s => SUCMAP[s].name), sv, sp, ALL, openSuc);
+  hb('ch-v3', lines.map(x => x.l.name), lines.map(x => x.v), lines.map(x => x.p), lines.map(x => x.l.id), k => openDetail('linea', k, true));
+}
+const openSuc = k => openDetail('suc', k, true);
+
+/* ===== COBRANZA ===== */
+function renderCobranza(el) {
+  const c = ctx(), L = c.last, LP = c.lastP;
+  const ar = sum(c.ids, 'ar', [L]), arP = sum(c.ids, 'ar', [LP]), dso = dsoAt(c.ids, L), dsoP = dsoAt(c.ids, LP), v = vencAt(c.ids, L), vP = vencAt(c.ids, LP);
+  const v90 = c.ids.reduce((a, s) => a + agingSuc(s, L)[4], 0), v90P = c.ids.reduce((a, s) => a + agingSuc(s, LP)[4], 0);
+  const lede = `El plazo promedio de cobro es de ${nf(dso, 0)} días, ${nf(dsoP - dso, 0)} menos que hace un año, y la cartera vencida bajó de ${pct(vP, 0)} a ${pct(v, 0)}.${c.ids.includes('CEL') ? ' Celaya va en sentido contrario y requiere seguimiento.' : ''}`;
+  const risk = CLIENTS.filter(x => c.ids.includes(x.suc)).map(x => ({ x, ...cliAR(x.id, L) })).sort((a, b) => b.venc - a.venc);
+  el.innerHTML = `
+  ${head(`Cobranza · Cierre de ${cierre(L)} · ${c.scope}`, 'Cartera y cobranza.', lede)}
+  <div class="kpis k4">
+    ${kpi('Cartera total', $M(ar), delta(growth(ar, arP), { good: 'down' }), 'por cobrar', '', 'cobranza:k-aging')}
+    ${kpi('Días promedio de cobro', nf(dso, 0) + ' días', delta(dso - dsoP, { unit: 'días', good: 'down', d: 0 }), 'meta 45 días', '', 'cobranza:k-dso')}
+    ${kpi('Cartera vencida', pct(v), delta(v - vP, { unit: 'pts', good: 'down' }), $M(ar * v / 100) + ' vencidos', '', 'cobranza:k-venc')}
+    ${kpi('Vencida a más de 90 días', $M(v90), delta(growth(v90, v90P), { good: 'down' }), 'riesgo de incobrable', '', 'cobranza:k-riesgo')}
+  </div>
+  <div class="grid">
+    ${card('Antigüedad de cartera por sucursal', legend([['#34c759', 'Al corriente'], ['#ffcc00', '1–30'], ['#ff9f0a', '31–60'], ['#ff6b3d', '61–90'], ['#e0352b', '+90 días']]) + box('ch-c1', 230), { span: 7, sub: hint, id: 'k-aging' })}
+    ${card('Días promedio de cobro', legend([[C.blue, c.scope], [C.ink, 'Meta 45 días', 1]]) + box('ch-c2', 230), { span: 5, id: 'k-dso' })}
+    ${card('Cartera vencida por sucursal (%)', legend(ALL.map(s => [SUC_COL[s], SUCMAP[s].name])) + box('ch-c3', 240), { span: 12, sub: 'Enero 2024 – octubre 2026', id: 'k-venc' })}
+    ${card('Clientes en riesgo', `<div class="table-wrap"><table><thead><tr><th>Cliente</th><th class="r hide-s">Saldo</th><th class="r">Vencido</th><th class="r">Atraso</th><th class="r hide-s">% vencido</th><th></th></tr></thead><tbody>${risk.slice(0, 8).map(k => `<tr class="click" data-open="cli:${k.x.id}"><td>${dot(k.dias > 60 ? 'r' : k.dias > 30 ? 'y' : 'g')}<b>${esc(k.x.name)}</b><div class="muted s">${SUCMAP[k.x.suc].name} · ${k.x.sec}</div></td><td class="r hide-s">${$M(k.saldo)}</td><td class="r">${$M(k.venc)}</td><td class="r">${k.dias} días</td><td class="r hide-s">${pct(k.pct, 0)}</td><td class="chev-c">›</td></tr>`).join('')}</tbody></table></div>`, { span: 12, sub: hint, id: 'k-riesgo' })}
+  </div>`;
+  const ag = ALL.map(s => agingSuc(s, L)), cols = ['#34c759', '#ffcc00', '#ff9f0a', '#ff6b3d', '#e0352b'];
+  mk('main', 'ch-c1', { type: 'bar', data: { labels: ALL.map(s => SUCMAP[s].name), datasets: AGING_BUCKETS.map((b, k) => ({ label: b, data: ag.map(a => a[k]), backgroundColor: cols[k], borderRadius: 4, borderSkipped: false, barPercentage: 0.62 })) }, options: { ...baseOpts({ indexAxis: 'y', plugins: { legend: { display: false }, tooltip: tip(v => $M(v)) } }), scales: { x: { stacked: true, grid: { color: 'rgba(0,0,0,.06)' }, border: { display: false }, ticks: { color: '#86868b', callback: moneyTick } }, y: { stacked: true, grid: { display: false }, border: { display: false }, ticks: { color: '#1d1d1f', font: { size: 12, weight: '500' } } } }, ...clickable(ALL, openSuc) } });
+  trendChart('main', 'ch-c2', [{ label: 'Días de cobro', data: Array.from({ length: NM }, (_, i) => dsoAt(c.ids, i)), color: C.blue, fill: C.blueSoft }], { fmt: v => nf(v, 0) + ' d', meta: 45, metaLabel: 'Meta' });
+  trendChart('main', 'ch-c3', ALL.map(s => ({ label: SUCMAP[s].name, data: M[s].venc, color: SUC_COL[s], w: s === 'CEL' ? 3 : 2 })), { fmt: v => nf(v, 0) + '%' });
+}
+
+/* ===== INVENTARIO ===== */
+function renderInventario(el) {
+  const c = ctx(), L = c.last, LP = c.lastP;
+  const inv = sum(c.ids, 'inv', [L]), invP = sum(c.ids, 'inv', [LP]), dio = dioAt(c.ids, L), dioP = dioAt(c.ids, LP);
+  const fill = wavg(c.ids, 'fill', c.cur), fillP = wavg(c.ids, 'fill', c.prev);
+  const slow = SLOW.filter(x => c.ids.includes(x.suc)), sc = state.suc === 'ALL' ? 1 : (SUCMAP[state.suc].base / 39.5) * 1.3;
+  const obs = c.Y === 2026 ? slow.filter(x => x.dias > 120).reduce((a, x) => a + x.valor, 0) : OBSOLETO[c.Y] * sc, obsP = OBSOLETO[c.YP] * sc;
+  const lede = `El inventario rota ${nf(365 / dio, 1)} veces al año contra ${nf(365 / dioP, 1)} en ${c.P.vs.replace(/^el /, '')}: son ${nf(dioP - dio, 0)} días menos de inventario, con un nivel de surtido de ${pct(fill)}.`;
+  const prods = PRODS.map(p => ({ p, v: prodSales(p.id, c.ids, c.cur) })).sort((a, b) => b.v - a.v);
+  const tot = prods.reduce((a, x) => a + x.v, 0); let acc = 0;
+  prods.forEach(x => { acc += x.v; x.acc = acc / tot * 100; x.cls = x.acc - x.v / tot * 100 < 70 ? 'A' : x.acc - x.v / tot * 100 < 90 ? 'B' : 'C'; });
+  const comp = ALL.map(s => { const i = M[s].inv[L]; return [i * 0.45, i * 0.2, i * 0.35]; });
+  el.innerHTML = `
+  ${head(`Inventario · Cierre de ${cierre(L)} · ${c.scope}`, 'Niveles de inventario.', lede)}
+  <div class="kpis k5">
+    ${kpi('Inventario total', $M(inv), delta(growth(inv, invP), { good: 'down' }), `vs ${c.P.vs.replace(/^el /, '')}`, '', 'inventario:k-comp')}
+    ${kpi('Días de inventario', nf(dio, 0) + ' días', delta(dio - dioP, { unit: 'días', good: 'down', d: 0 }), 'meta 55 días', '', 'inventario:k-dio')}
+    ${kpi('Rotación', nf(365 / dio, 1) + ' veces', delta(365 / dio - 365 / dioP, { unit: 'veces' }), 'al año', '', 'inventario:k-abc')}
+    ${kpi('Nivel de surtido', pct(fill), delta(fill - fillP, { unit: 'pts' }), 'pedidos completos', '', 'inventario:k-quiebres')}
+    ${kpi('Sin movimiento +120 días', $M(obs), delta(growth(obs, obsP), { good: 'down', d: 0 }, ), `vs cierre ${c.YP} · ` + (c.Y === 2026 ? `${slow.filter(x => x.dias > 120).length} productos` : 'al cierre'), '', 'inventario:slow')}
+  </div>
+  <div class="grid">
+    ${card('Días de inventario', legend([[C.blue, c.scope], [C.ink, 'Meta 55 días', 1]]) + box('ch-i1', 230), { span: 7, id: 'k-dio' })}
+    ${card('Composición por sucursal', legend([[C.blue, 'Materia prima'], [C.teal, 'En proceso'], [C.indigo, 'Producto terminado']]) + box('ch-i2', 230), { span: 5, sub: hint, id: 'k-comp' })}
+    ${card('Productos sin movimiento', `<div class="table-wrap"><table><thead><tr><th>Producto</th><th class="hide-s">Sucursal</th><th class="r">Días sin moverse</th><th class="r">Valor</th><th></th></tr></thead><tbody>${slow.sort((a, b) => b.dias - a.dias).map(x => `<tr class="click ${x.dias > 120 ? 'hot' : ''}" data-open="prod:${x.prod}"><td>${dot(x.dias > 120 ? 'r' : 'y')}<b>${esc(x.name)}</b><div class="muted s">${x.sku}</div></td><td class="hide-s">${SUCMAP[x.suc].name}</td><td class="r"><b>${x.dias}</b></td><td class="r">${$M(x.valor, 2)}</td><td class="chev-c">›</td></tr>`).join('') || '<tr><td colspan="5" class="muted">Sin productos detenidos.</td></tr>'}</tbody></table></div><p class="note">Sugerencia: liquidar los ${slow.filter(x => x.dias > 120).length} productos en rojo con descuento o reprocesarlos libera ${$M(obs)} de efectivo.</p>`, { span: 7, id: 'slow', sub: 'Situación al cierre de octubre 2026' })}
+    ${card('Quiebres de inventario por mes', legend([[C.blue, '' + c.Y], [C.gray2, '' + c.YP]]) + box('ch-i3', 230) + `<p class="note">Pedidos que no se surtieron completos por falta de producto.</p>`, { span: 5, id: 'k-quiebres' })}
+    ${card('Análisis ABC de productos', `<div class="table-wrap"><table><thead><tr><th>Producto</th><th class="hide-s">Línea</th><th class="r">Ventas</th><th class="r hide-s">% acumulado</th><th class="r">Clase</th><th class="r">Días inv.</th><th></th></tr></thead><tbody>${prods.map(x => `<tr class="click" data-open="prod:${x.p.id}"><td><b>${x.p.name}</b><div class="muted s">${x.p.id}</div></td><td class="hide-s">${LINEMAP[x.p.line].name}</td><td class="r">${$M(x.v)}</td><td class="r hide-s">${pct(x.acc, 0)}</td><td class="r"><span class="tag cls-${x.cls}">${x.cls}</span></td><td class="r">${nf(prodDio(x.p.id, c.ids, L), 0)}</td><td class="chev-c">›</td></tr>`).join('')}</tbody></table></div>`, { span: 12, sub: hint, id: 'k-abc' })}
+  </div>`;
+  trendChart('main', 'ch-i1', [{ label: 'Días de inventario', data: Array.from({ length: NM }, (_, i) => dioAt(c.ids, i)), color: C.blue, fill: C.blueSoft }], { fmt: v => nf(v, 0) + ' d', meta: 55 });
+  mk('main', 'ch-i2', { type: 'bar', data: { labels: ALL.map(s => SUCMAP[s].name), datasets: ['Materia prima', 'En proceso', 'Producto terminado'].map((l, k) => ({ label: l, data: comp.map(x => x[k]), backgroundColor: [C.blue, C.teal, C.indigo][k], borderRadius: 4, borderSkipped: false, barPercentage: 0.6 })) }, options: { ...baseOpts({ plugins: { legend: { display: false }, tooltip: tip(v => $M(v)) } }), scales: { x: { stacked: true, grid: { display: false }, border: { display: false }, ticks: { color: '#1d1d1f' } }, y: { stacked: true, grid: { color: 'rgba(0,0,0,.06)' }, border: { display: false }, ticks: { color: '#86868b', callback: moneyTick, maxTicksLimit: 5 } } }, ...clickable(ALL, openSuc) } });
+  monthBars('main', 'ch-i3', ser(c.ids, 'stockouts'), v => nf(v, 0));
+}
+
+/* ===== PRODUCCIÓN ===== */
+function renderProduccion(el) {
+  const c = ctx(), oee = wavg(c.ids, 'oee', c.cur), oeeP = wavg(c.ids, 'oee', c.prev), sc = wavg(c.ids, 'scrap', c.cur), scP = wavg(c.ids, 'scrap', c.prev);
+  const otd = wavg(c.ids, 'otd', c.cur), otdP = wavg(c.ids, 'otd', c.prev), uc = wavg(c.ids, 'ucost', c.cur, 'units'), ucP = wavg(c.ids, 'ucost', c.prev, 'units');
+  const un = sum(c.ids, 'units', c.cur), unP = sum(c.ids, 'units', c.prev);
+  const lede = `La eficiencia de planta subió ${nf(oee - oeeP, 1)} puntos y el scrap bajó a ${pct(sc)}. ${c.ids.includes('LEO') ? 'León está por debajo del resto por fallas en su prensa principal.' : 'Todas las plantas mejoraron frente a 2025.'}`;
+  const eq = EQUIP.filter(x => c.ids.includes(x.suc)).sort((a, b) => a.oee - b.oee);
+  el.innerHTML = `
+  ${head(`Producción · ${c.P.label} · ${c.scope}`, 'Desempeño de planta.', lede)}
+  <div class="kpis k5">
+    ${kpi('Eficiencia (OEE)', pct(oee), delta(oee - oeeP, { unit: 'pts' }), `meta ${OEE_META}%`, '', 'produccion:k-oee')}
+    ${kpi('Scrap', pct(sc), delta(sc - scP, { unit: 'pts', good: 'down' }), 'producto defectuoso', '', 'produccion:k-scrap')}
+    ${kpi('Entregas a tiempo', pct(otd), delta(otd - otdP, { unit: 'pts' }), 'a clientes', '', 'produccion:k-otd')}
+    ${kpi('Costo por pieza', nf(uc, 1), delta(growth(uc, ucP), { good: 'down' }), 'índice 2025 = 100', '', 'produccion:k-equipos')}
+    ${kpi('Piezas producidas', nf(un / 1000, 1) + ' M', delta(growth(un, unP)), 'millones', '', 'produccion:k-oeet')}
+  </div>
+  <div class="grid">
+    ${card(`OEE por planta (${MESL[c.last % 12]} ${c.Y})`, legend([[C.blue, 'OEE actual'], [C.ink, `Meta ${OEE_META}%`, 1]]) + box('ch-p1', 240), { span: 5, sub: hint, id: 'k-oee' })}
+    ${card('Evolución del OEE por planta', legend(ALL.map(s => [SUC_COL[s], SUCMAP[s].name])) + box('ch-p2', 240), { span: 7, id: 'k-oeet' })}
+    ${card('Scrap por planta', legend([[C.blue, c.curCol], [C.gray2, c.vsCol]]) + box('ch-p3', 220), { span: 5, sub: hint, id: 'k-scrap' })}
+    ${card('Entregas a tiempo por planta', legend([[C.blue, c.curCol], [C.gray2, c.vsCol], [C.ink, 'Meta 95%', 1]]) + box('ch-p4', 220), { span: 7, sub: hint, id: 'k-otd' })}
+    ${card('Equipos críticos', `<div class="table-wrap"><table><thead><tr><th>Equipo</th><th class="hide-s">Planta</th><th class="r">OEE</th><th class="r hide-s">Disponib.</th><th class="r hide-s">Rendim.</th><th class="r hide-s">Calidad</th></tr></thead><tbody>${eq.map(x => `<tr class="click ${x.oee < 60 ? 'hot' : ''}" data-open="planta:${x.suc}"><td>${dot(x.oee >= 80 ? 'g' : x.oee >= 70 ? 'y' : 'r')}<b>${x.name}</b><div class="muted s show-s">${SUCMAP[x.suc].name}</div></td><td class="hide-s">${SUCMAP[x.suc].name}</td><td class="r"><b>${pct(x.oee, 0)}</b></td><td class="r hide-s">${pct(x.a, 0)}</td><td class="r hide-s">${pct(x.p, 0)}</td><td class="r hide-s">${pct(x.q, 1)}</td></tr>`).join('')}</tbody></table></div>`, { span: 12, sub: 'Situación actual · del menos al más eficiente', id: 'k-equipos' })}
+  </div>`;
+  const oNow = ALL.map(s => M[s].oee[c.last]);
+  mk('main', 'ch-p1', { type: 'bar', data: { labels: ALL.map(s => SUCMAP[s].name), datasets: [{ type: 'bar', label: 'OEE', data: oNow, backgroundColor: oNow.map((v, k) => (state.suc !== 'ALL' && ALL[k] !== state.suc) ? 'rgba(0,113,227,.25)' : v < 70 ? C.red : C.blue), borderRadius: 8, barPercentage: 0.6 }, { type: 'line', label: 'Meta', data: ALL.map(() => OEE_META), borderColor: C.ink, borderDash: [5, 4], borderWidth: 1.2, pointRadius: 0 }] }, options: { ...baseOpts({ plugins: { legend: { display: false }, tooltip: tip(v => pct(v)) } }), scales: { x: { grid: { display: false }, border: { display: false }, ticks: { color: '#1d1d1f' } }, y: { min: 50, max: 100, grid: { color: 'rgba(0,0,0,.06)' }, border: { display: false }, ticks: { color: '#86868b', callback: v => v + '%' } } }, ...clickable(ALL, k => openDetail('planta', k, true)) } });
+  trendChart('main', 'ch-p2', ALL.map(s => ({ label: SUCMAP[s].name, data: M[s].oee, color: SUC_COL[s], w: s === 'LEO' ? 3 : 2 })), { fmt: v => nf(v, 0) + '%', meta: OEE_META });
+  mk('main', 'ch-p4', { data: { labels: ALL.map(s => SUCMAP[s].name), datasets: [{ type: 'bar', label: c.curCol, data: ALL.map(s => wavg([s], 'otd', c.cur)), backgroundColor: ALL.map(s => wavg([s], 'otd', c.cur) < 93 ? C.red : C.blue), borderRadius: 6, categoryPercentage: 0.6 }, { type: 'bar', label: c.vsCol, data: ALL.map(s => wavg([s], 'otd', c.prev)), backgroundColor: C.gray2, borderRadius: 6, categoryPercentage: 0.6 }, { type: 'line', label: 'Meta', data: ALL.map(() => 95), borderColor: C.ink, borderDash: [5, 4], borderWidth: 1.2, pointRadius: 0 }] }, options: { ...baseOpts({ plugins: { legend: { display: false }, tooltip: tip(v => pct(v)) } }), scales: { x: { grid: { display: false }, border: { display: false }, ticks: { color: '#1d1d1f' } }, y: { min: 80, max: 100, grid: { color: 'rgba(0,0,0,.06)' }, border: { display: false }, ticks: { color: '#86868b', callback: v => v + '%' } } }, ...clickable(ALL, k => openDetail('planta', k, true)) } });
+  mk('main', 'ch-p3', { type: 'bar', data: { labels: ALL.map(s => SUCMAP[s].name), datasets: [{ label: c.curCol, data: ALL.map(s => wavg([s], 'scrap', c.cur)), backgroundColor: ALL.map(s => s === 'LEO' ? C.red : C.blue), borderRadius: 6, categoryPercentage: 0.6 }, { label: c.vsCol, data: ALL.map(s => wavg([s], 'scrap', c.prev)), backgroundColor: C.gray2, borderRadius: 6, categoryPercentage: 0.6 }] }, options: { ...baseOpts({ plugins: { legend: { display: false }, tooltip: tip(v => pct(v)) } }), ...clickable(ALL, k => openDetail('planta', k, true)) } });
+}
+
+/* ===== ESTADO DE RESULTADOS ===== */
+function renderEdr(el) {
+  const c = ctx(), e = edr(c.ids, c.cur), p = edr(c.ids, c.prev), b = edrBudget(c.ids, c.cur);
+  const ROWS = [['Ventas netas', 'ventas', 1, 0], ['Costo de ventas', 'costo', -1, 0], ['Utilidad bruta', 'bruta', 1, 1], ['Gastos de venta', 'gv', -1, 0], ['Gastos de administración', 'adm', -1, 0], ['EBITDA', 'ebitda', 1, 1], ['Depreciación', 'dep', -1, 0], ['Utilidad de operación', 'ebit', 1, 0], ['Gastos financieros', 'fin', -1, 0], ['Utilidad antes de impuestos', 'uai', 1, 0], ['ISR', 'isr', -1, 0], ['Utilidad neta', 'neta', 1, 1]];
+  const lede = `La utilidad neta creció ${nf(growth(e.neta, p.neta), 0)}% con ventas ${nf(growth(e.ventas, p.ventas), 0)}% arriba: influyen el mayor margen bruto, el control de gastos y menores intereses.`;
+  const vol = (e.ventas - p.ventas) * p.mb / 100, mar = e.ventas * (e.mb - p.mb) / 100, gv = -(e.gv - p.gv), ad = -(e.adm - p.adm);
+  el.innerHTML = `
+  ${head(`Estado de resultados · ${c.P.label} · ${c.scope}`, 'Resultados financieros.', lede)}
+  <div class="kpis k4">
+    ${kpi('Utilidad bruta', $M(e.bruta), delta(growth(e.bruta, p.bruta)), `margen ${pct(e.mb)}`, '', 'edr:k-margen')}
+    ${kpi('EBITDA', $M(e.ebitda), delta(growth(e.ebitda, p.ebitda)), `margen ${pct(e.me)}`, '', 'edr:k-ebitda')}
+    ${kpi('Utilidad neta', $M(e.neta), delta(growth(e.neta, p.neta)), `margen ${pct(e.mn)}`, '', 'edr:k-edr')}
+    ${kpi('EBITDA vs presupuesto', pct(e.ebitda / b.ebitda * 100, 0), delta(growth(e.ebitda, b.ebitda)), `meta ${$M(b.ebitda)}`, '', 'edr:k-edr')}
+  </div>
+  <div class="grid">
+    ${card('Estado de resultados', `<div class="table-wrap"><table class="pl"><thead><tr><th>Concepto</th><th class="r">${c.curCol}</th><th class="r hide-s">% ventas</th><th class="r">${c.vsCol}</th><th class="r">Variación</th><th class="r hide-s">Presupuesto</th><th class="r hide-s">vs ppto.</th></tr></thead><tbody>${ROWS.map(([l, k, sg, bold]) => { const good = sg > 0 ? 'up' : 'down'; return `<tr class="${bold ? 'tot' : ''}"><td>${l}</td><td class="r">${$M(e[k])}</td><td class="r hide-s muted">${pct(e[k] / e.ventas * 100)}</td><td class="r muted">${$M(p[k])}</td><td class="r">${delta(growth(e[k], p[k]), { good })}</td><td class="r hide-s muted">${$M(b[k])}</td><td class="r hide-s">${delta(growth(e[k], b[k]), { good })}</td></tr>`; }).join('')}</tbody></table></div>`, { span: 12, sub: 'Millones de pesos', id: 'k-edr' })}
+    ${card('¿Por qué creció el EBITDA?', box('ch-e1', 280) + `<p class="note">Puente de EBITDA ${c.P.vs.replace(/^el /, '')} → ${c.P.short} ${c.Y}.</p>`, { span: 7, id: 'k-ebitda' })}
+    ${card('Margen bruto por línea', legend([[C.blue, c.curCol], [C.gray2, c.vsCol]]) + box('ch-e2', 280), { span: 5, sub: hint, id: 'k-margen' })}
+  </div>`;
+  const steps = [[`EBITDA ${c.vsCol}`, p.ebitda, 'base'], ['Más ventas', vol], ['Mejor margen', mar], ['Gastos de venta', gv], ['Gastos admin.', ad], [`EBITDA ${c.curCol}`, e.ebitda, 'base']];
+  let run = 0; const data = steps.map(([l, v, t]) => { if (t) { run = v; return [0, v]; } const a = run; run += v; return [a, run]; });
+  mk('main', 'ch-e1', { type: 'bar', data: { labels: steps.map(s => s[0]), datasets: [{ label: 'EBITDA', data, backgroundColor: steps.map(([, v, t]) => t ? C.ink : v >= 0 ? C.green : C.red), borderRadius: 6, borderSkipped: false, barPercentage: 0.65 }] }, options: { ...baseOpts({ plugins: { legend: { display: false }, tooltip: { ...tip(), callbacks: { label: ctx => { const s = steps[ctx.dataIndex]; return ' ' + (s[2] ? $M(s[1]) : (s[1] >= 0 ? '+' : '') + $M(s[1])); } } } } }), scales: { x: { grid: { display: false }, border: { display: false }, ticks: { color: '#1d1d1f', font: { size: 11 } } }, y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,.06)' }, border: { display: false }, ticks: { color: '#86868b', callback: moneyTick, maxTicksLimit: 5 } } } } });
+  mk('main', 'ch-e2', { type: 'bar', data: { labels: LINES.map(l => l.name.split(' ')[0] + (l.id === 'CNC' ? ' CNC' : '')), datasets: [{ label: c.curCol, data: LINES.map(l => lineMarg(l.id, c.ids, c.cur)), backgroundColor: LINES.map(l => l.id === 'EST' ? C.red : C.blue), borderRadius: 6, categoryPercentage: 0.6 }, { label: c.vsCol, data: LINES.map(l => lineMarg(l.id, c.ids, c.prev)), backgroundColor: C.gray2, borderRadius: 6, categoryPercentage: 0.6 }] }, options: { ...baseOpts({ plugins: { legend: { display: false }, tooltip: tip(v => pct(v)) } }), scales: { x: { grid: { display: false }, border: { display: false }, ticks: { color: '#1d1d1f' } }, y: { min: 15, grid: { color: 'rgba(0,0,0,.06)' }, border: { display: false }, ticks: { color: '#86868b', callback: v => v + '%' } } }, ...clickable(LINES.map(l => l.id), k => openDetail('linea', k, true)) } });
+}
+
+/* ===== FLUJO ===== */
+function renderFlujo(el) {
+  const c = ctx(), L = c.last, LP = c.lastP;
+  const dso = dsoAt(c.ids, L), dio = dioAt(c.ids, L), dpo = dpoAt(c.ids, L), dsoP = dsoAt(c.ids, LP), dioP = dioAt(c.ids, LP), dpoP = dpoAt(c.ids, LP);
+  const ccc = dso + dio - dpo, cccP = dsoP + dioP - dpoP, lib = liberado(c.ids, L, LP);
+  const cf = cfoSer(c.ids), cfc = c.cur.reduce((a, i) => a + cf[i], 0), cfp = c.prev.reduce((a, i) => a + cf[i], 0);
+  const lede = `El ciclo de conversión de efectivo es de ${nf(ccc, 0)} días, contra ${nf(cccP, 0)} hace un año. Eso equivale a ${$M(lib, 0)} menos de capital de trabajo inmovilizado.`;
+  const mx = Math.max(dsoP + dioP, dso + dio);
+  const bar = (lab, di, ds, dp, cc) => `<div class="ccc-row"><div class="ccc-lab">${lab}</div><div class="ccc-track"><span class="seg inv" style="width:${di / mx * 100}%"><em>Inventario ${nf(di, 0)} d</em></span><span class="seg cob" style="width:${ds / mx * 100}%"><em>Cobro ${nf(ds, 0)} d</em></span></div><div class="ccc-track sub"><span class="seg pay" style="width:${dp / mx * 100}%"><em>− Pago a proveedores ${nf(dp, 0)} d</em></span></div><div class="ccc-res"><b>${nf(cc, 0)}</b> días</div></div>`;
+  el.innerHTML = `
+  ${head(`Flujo de efectivo · ${c.P.label} · ${c.scope}`, 'Flujo y capital de trabajo.', lede)}
+  <div class="kpis k5">
+    ${kpi('Ciclo de conversión de efectivo', nf(ccc, 0) + ' días', delta(ccc - cccP, { unit: 'días', good: 'down', d: 0 }), 'inv. + cobro − pago', '', 'flujo:k-ccc')}
+    ${kpi('Días de cobro', nf(dso, 0), delta(dso - dsoP, { unit: 'días', good: 'down', d: 0 }), 'ver cobranza', '', 'cobranza:k-dso')}
+    ${kpi('Días de inventario', nf(dio, 0), delta(dio - dioP, { unit: 'días', good: 'down', d: 0 }), 'ver inventario', '', 'inventario:k-dio')}
+    ${kpi('Días de pago a proveedores', nf(dpo, 0), delta(dpo - dpoP, { unit: 'días', d: 0 }), '', '', 'flujo:k-ccc')}
+    ${kpi('Flujo operativo', $M(cfc), delta(growth(cfc, cfp)), c.P.short, '', 'flujo:k-cfo')}
+  </div>
+  <div class="grid">
+    ${card('Ciclo de conversión de efectivo', `<div class="ccc">${bar(c.vsCol.replace(/^\w/, m => m.toUpperCase()), dioP, dsoP, dpoP, cccP)}${bar(c.curCol, dio, dso, dpo, ccc)}</div><p class="note">Cada día que acortamos el ciclo equivale a unos ${$M(trail(c.ids, 'sales', L) / 90, 1)} de efectivo disponible.</p>`, { span: 12, id: 'k-ccc' })}
+    ${card('Flujo operativo mensual', legend([[C.blue, '' + c.Y], [C.gray2, '' + c.YP], [C.ink, 'Acumulado ' + c.Y]]) + box('ch-f1', 270), { span: 7, sub: 'Millones de pesos', id: 'k-cfo' })}
+    ${card('Capital de trabajo', legend([[C.blue, 'Cartera + inventario − proveedores']]) + box('ch-f2', 270), { span: 5, sub: 'Millones de pesos' })}
+  </div>`;
+  let acc = 0; const cum = MES.map((_, k) => k <= lastMonth(c.Y) ? (acc += cf[ix(c.Y, k)]) : null);
+  mk('main', 'ch-f1', { data: { labels: MES, datasets: [{ type: 'bar', label: '' + c.Y, data: yearData(cf, c.Y), backgroundColor: perCols(c, C.blue, 'rgba(0,113,227,.28)'), borderRadius: 5, categoryPercentage: 0.7, yAxisID: 'y' }, { type: 'bar', label: '' + c.YP, data: yearData(cf, c.YP), backgroundColor: perCols(c, C.gray, C.gray2), borderRadius: 5, categoryPercentage: 0.7, yAxisID: 'y' }, { type: 'line', label: 'Acumulado ' + c.Y, data: cum, borderColor: C.ink, borderWidth: 2, pointRadius: 0, tension: 0.3, yAxisID: 'y2' }] }, options: { ...baseOpts({ plugins: { legend: { display: false }, tooltip: tip(v => v == null ? '—' : $M(v)) } }), scales: { x: { grid: { display: false }, border: { display: false }, ticks: { color: '#86868b' } }, y: { grid: { color: 'rgba(0,0,0,.06)' }, border: { display: false }, ticks: { color: '#86868b', callback: moneyTick, maxTicksLimit: 5 } }, y2: { position: 'right', grid: { display: false }, border: { display: false }, ticks: { color: '#86868b', callback: moneyTick, maxTicksLimit: 5 } } } } });
+  trendChart('main', 'ch-f2', [{ label: 'Capital de trabajo', data: Array.from({ length: NM }, (_, i) => wcAt(c.ids, i)), color: C.blue, fill: C.blueSoft }], { fmt: v => $M(v, 0) });
+}
+
+/* ===== DETALLE (hoja lateral) ===== */
+const stack = [];
+function openDetail(type, key, reset) {
+  if (reset) stack.length = 0;
+  stack.push([type, key]); drawSheet();
+  document.body.classList.add('sheet-open');
+}
+function closeSheet() { stack.length = 0; document.body.classList.remove('sheet-open'); killCharts('sheet'); }
+function backSheet() { stack.pop(); if (!stack.length) return closeSheet(); drawSheet(); }
+function drawSheet() {
+  killCharts('sheet');
+  const [type, key] = stack[stack.length - 1], el = document.getElementById('sheet-body');
+  document.getElementById('sheet-back').textContent = stack.length > 1 ? '‹ Atrás' : 'Cerrar';
+  ({ suc: sheetSuc, cli: sheetCli, prod: sheetProd, linea: sheetLinea, planta: sheetPlanta })[type](el, key);
+  el.scrollTop = 0;
+}
+const sk = (l, v, d = '') => `<div class="skpi"><span>${l}</span><b>${v}</b>${d}</div>`;
+function sheetSuc(el, id) {
+  const c = ctx(), s = SUCMAP[id], e = edr([id], c.cur), p = edr([id], c.prev), b = edrBudget([id], c.cur);
+  const dso = dsoAt([id], c.last), dsoP = dsoAt([id], c.lastP), v = vencAt([id], c.last), vP = vencAt([id], c.lastP), oee = M[id].oee[c.last], dio = dioAt([id], c.last), dioP = dioAt([id], c.lastP);
+  const al = ALERTS.map((a, i) => [a, i]).filter(([a]) => a.suc === id);
+  const cl = CLIENTS.filter(x => x.suc === id).map(x => ({ x, v: cliSales(x.id, c.cur), p: cliSales(x.id, c.prev), ...cliAR(x.id, c.last) })).sort((a, b) => b.v - a.v);
+  el.innerHTML = `<div class="eyebrow">Sucursal y planta · ${c.P.label}</div><h2>${s.name}</h2>
+  <div class="skpis">${sk('Ventas', $M(e.ventas), delta(growth(e.ventas, p.ventas)))}${sk('vs presupuesto', pct(e.ventas / b.ventas * 100, 0), delta(growth(e.ventas, b.ventas)))}${sk('Margen bruto', pct(e.mb), delta(e.mb - p.mb, { unit: 'pts' }))}${sk('Días de cobro', nf(dso, 0), delta(dso - dsoP, { unit: 'd', good: 'down', d: 0 }))}${sk('Cartera vencida', pct(v, 0), delta(v - vP, { unit: 'pts', good: 'down', d: 0 }))}${sk('Días de inventario', nf(dio, 0), delta(dio - dioP, { unit: 'd', good: 'down', d: 0 }))}${sk('OEE', pct(oee, 0), delta(oee - M[id].oee[c.lastP], { unit: 'pts', d: 0 }))}${sk('Entregas a tiempo', pct(M[id].otd[c.last], 0), '')}</div>
+  ${al.length ? `<h4>Focos rojos</h4><div class="alerts">${al.map(([a, i]) => alertCard(a, i)).join('')}</div>` : ''}
+  <h4>Ventas mensuales</h4>${legend([[C.blue, '' + c.Y], [C.gray2, '' + c.YP], [C.ink, 'Presupuesto', 1]])}${box('sh-1', 220)}
+  <h4>Clientes</h4><div class="table-wrap"><table><thead><tr><th>Cliente</th><th class="r">Ventas</th><th class="r">vs ${c.vsCol}</th><th class="r">Vencido</th><th></th></tr></thead><tbody>${cl.map(k => `<tr class="click" data-open="cli:${k.x.id}" data-push="1"><td>${dot(k.dias > 60 ? 'r' : k.dias > 30 ? 'y' : 'g')}<b>${esc(k.x.name)}</b><div class="muted s">${k.x.sec}</div></td><td class="r">${$M(k.v)}</td><td class="r">${k.p > 0.01 ? delta(growth(k.v, k.p)) : '<span class="delta good">Nuevo</span>'}</td><td class="r">${$M(k.venc)}</td><td class="chev-c">›</td></tr>`).join('')}</tbody></table></div>
+  <h4>Ventas por línea</h4><div class="bars">${LINES.map(l => { const vv = lineSales(l.id, [id], c.cur), pp = lineSales(l.id, [id], c.prev), mx = Math.max(...LINES.map(k => lineSales(k.id, [id], c.cur))); return `<div class="bar-row click" data-open="linea:${l.id}" data-push="1"><span class="bar-l">${l.name}</span><span class="bar-t"><span style="width:${vv / mx * 100}%"></span></span><span class="bar-v">${$M(vv)} ${delta(growth(vv, pp))}</span></div>`; }).join('')}</div>`;
+  salesChart('sheet', 'sh-1', [id]);
+}
+function sheetCli(el, id) {
+  const c = ctx(), x = CLIMAP[id], v = cliSales(id, c.cur), p = cliSales(id, c.prev), ar = cliAR(id, c.last), s = cliSer(id);
+  const share = v / sum([x.suc], 'sales', c.cur) * 100;
+  const rec = ar.dias > 60 ? `<b>Acción sugerida:</b> suspender nuevos pedidos a crédito hasta regularizar, negociar un convenio de pago a 60 días y revisar su límite de crédito. Es el ${pct(share, 0)} de las ventas de ${SUCMAP[x.suc].name}: hay que cuidarlo sin seguir financiándolo.` : x.nuevo ? `<b>Cliente nuevo 2026.</b> Ganado en enero con piezas de Maquinado CNC certificadas para el sector aeroespacial. Paga a tiempo y tiene potencial de duplicar volumen en 2027.` : ar.dias > 30 ? `<b>Vigilar:</b> atraso moderado. Sugerimos recordatorios automáticos y una visita del equipo de cobranza.` : `<b>Cliente sano:</b> paga a tiempo. Oportunidad de ofrecerle más líneas de producto.`;
+  const vp = ar.pct / 100, split = vp > 0.25 ? [0.2, 0.22, 0.23, 0.35] : [0.5, 0.25, 0.15, 0.1];
+  const ag = [ar.saldo * (1 - vp), ...split.map(k => ar.saldo * vp * k)], cols = ['#34c759', '#ffcc00', '#ff9f0a', '#ff6b3d', '#e0352b'];
+  el.innerHTML = `<div class="eyebrow">Cliente · ${x.sec} · ${SUCMAP[x.suc].name}</div><h2>${esc(x.name)}</h2>
+  <div class="skpis">${sk('Ventas ' + c.P.short, $M(v), p > 0.01 ? delta(growth(v, p)) : '<span class="delta good">Nuevo</span>')}${sk('Participación en sucursal', pct(share, 0), '')}${sk('Saldo por cobrar', $M(ar.saldo), '')}${sk('Vencido', $M(ar.venc), `<span class="delta ${ar.pct > 25 ? 'bad' : 'flat'}">${pct(ar.pct, 0)} del saldo</span>`)}${sk('Días de atraso', ar.dias + ' días', '')}${sk('Sector', x.sec, '')}</div>
+  <div class="callout ${ar.dias > 60 ? 'bad' : x.nuevo ? 'good' : ''}">${rec}</div>
+  <h4>Antigüedad del saldo</h4><div class="stackbar">${ag.map((a, k) => a > 0.005 ? `<span style="flex:${a};background:${cols[k]}" title="${AGING_BUCKETS[k]}: ${$M(a, 2)}"></span>` : '').join('')}</div>
+  <div class="legend">${AGING_BUCKETS.map((b, k) => `<span><i style="background:${cols[k]}"></i>${b} · ${$M(ag[k], 2)}</span>`).join('')}</div>
+  <h4>Compras mensuales</h4>${legend([[C.blue, '' + c.Y], [C.gray2, '' + c.YP]])}${box('sh-1', 220)}`;
+  monthBars('sheet', 'sh-1', s, v => $M(v, 2));
+}
+function sheetProd(el, id) {
+  const c = ctx(), pr = PRODMAP[id], v = prodSales(id, c.ids, c.cur), p = prodSales(id, c.ids, c.prev), m = prodMarg(id, c.ids, c.cur), mp = prodMarg(id, c.ids, c.prev), s = prodSer(id, c.ids);
+  const di = prodDio(id, c.ids, c.last), sl = SLOW.filter(x => x.prod === id && c.ids.includes(x.suc));
+  el.innerHTML = `<div class="eyebrow">Producto · ${LINEMAP[pr.line].name} · ${c.scope}</div><h2>${pr.name}</h2><div class="muted">${pr.id}</div>
+  <div class="skpis">${sk('Ventas ' + c.P.short, $M(v), delta(growth(v, p)))}${sk('Margen bruto', pct(m), delta(m - mp, { unit: 'pts' }))}${sk('Días de inventario', nf(di, 0), `<span class="delta ${di > 70 ? 'bad' : 'good'}">${di > 70 ? 'arriba de meta' : 'en meta'}</span>`)}${sk('Rotación', nf(365 / di, 1) + ' veces', '')}</div>
+  ${sl.length ? `<div class="callout bad"><b>${sl.length} variante${sl.length > 1 ? 's' : ''} sin movimiento:</b> ${sl.map(x => `${esc(x.name)} (${x.dias} días, ${$M(x.valor, 2)})`).join('; ')}. Conviene liquidarla${sl.length > 1 ? 's' : ''} o reprocesarla${sl.length > 1 ? 's' : ''}.</div>` : ''}
+  <h4>Ventas mensuales</h4>${legend([[C.blue, '' + c.Y], [C.gray2, '' + c.YP]])}${box('sh-1', 220)}
+  <h4>Ventas por sucursal</h4><div class="bars">${ALL.map(sid => { const vv = prodSales(id, [sid], c.cur), mx = Math.max(...ALL.map(k => prodSales(id, [k], c.cur))); return `<div class="bar-row click" data-open="suc:${sid}" data-push="1"><span class="bar-l">${SUCMAP[sid].name}</span><span class="bar-t"><span style="width:${vv / mx * 100}%"></span></span><span class="bar-v">${$M(vv)}</span></div>`; }).join('')}</div>`;
+  monthBars('sheet', 'sh-1', s, v => $M(v, 2));
+}
+function sheetLinea(el, id) {
+  const c = ctx(), l = LINEMAP[id], v = lineSales(id, c.ids, c.cur), p = lineSales(id, c.ids, c.prev), m = lineMarg(id, c.ids, c.cur), mp = lineMarg(id, c.ids, c.prev);
+  const s = lineSer(id, c.ids), ms = Array.from({ length: NM }, (_, i) => lineMarg(id, c.ids, [i]));
+  const note = id === 'EST' ? `<div class="callout bad"><b>Por qué bajó el margen:</b> el acero subió cerca de 9% en el año y no se trasladó completo al precio; además, el scrap de la prensa P-07 en León encarece cada pieza. <b>Sugerencia:</b> renegociar precios con cláusula de ajuste por acero y atender la prensa P-07.</div>` : id === 'CNC' ? `<div class="callout good"><b>Motor de crecimiento:</b> la certificación aeroespacial abrió la cuenta de Aeronáutica Strelia. El buje aeronáutico ya es el producto de mayor margen de la empresa.</div>` : '';
+  el.innerHTML = `<div class="eyebrow">Línea de producto · ${c.scope}</div><h2>${l.name}</h2>
+  <div class="skpis">${sk('Ventas ' + c.P.short, $M(v), delta(growth(v, p)))}${sk('Margen bruto', pct(m), delta(m - mp, { unit: 'pts' }))}${sk('Participación', pct(v / sum(c.ids, 'sales', c.cur) * 100, 0), '')}${sk('Productos', PRODS.filter(x => x.line === id).length, '')}</div>
+  ${note}
+  <h4>Ventas mensuales</h4>${legend([[C.blue, '' + c.Y], [C.gray2, '' + c.YP]])}${box('sh-1', 200)}
+  <h4>Margen bruto mensual</h4>${box('sh-2', 180)}
+  <h4>Productos</h4><div class="table-wrap"><table><thead><tr><th>Producto</th><th class="r">Ventas</th><th class="r">vs ${c.vsCol}</th><th class="r">Margen</th><th></th></tr></thead><tbody>${PRODS.filter(x => x.line === id).map(x => `<tr class="click" data-open="prod:${x.id}" data-push="1"><td><b>${x.name}</b><div class="muted s">${x.id}</div></td><td class="r">${$M(prodSales(x.id, c.ids, c.cur))}</td><td class="r">${delta(growth(prodSales(x.id, c.ids, c.cur), prodSales(x.id, c.ids, c.prev)))}</td><td class="r">${pct(prodMarg(x.id, c.ids, c.cur))}</td><td class="chev-c">›</td></tr>`).join('')}</tbody></table></div>`;
+  monthBars('sheet', 'sh-1', s, v => $M(v, 2));
+  trendChart('sheet', 'sh-2', [{ label: 'Margen', data: ms, color: id === 'EST' ? C.red : C.blue }], { fmt: v => nf(v, 1) + '%' });
+}
+function sheetPlanta(el, id) {
+  const c = ctx(), s = SUCMAP[id], m = M[id], eq = EQUIP.filter(x => x.suc === id).sort((a, b) => a.oee - b.oee);
+  const oee = wavg([id], 'oee', c.cur), oeeP = wavg([id], 'oee', c.prev), sc = wavg([id], 'scrap', c.cur), scP = wavg([id], 'scrap', c.prev), otd = wavg([id], 'otd', c.cur), otdP = wavg([id], 'otd', c.prev);
+  const note = id === 'LEO' ? `<div class="callout bad"><b>Diagnóstico:</b> la prensa P-07 (600 t) tiene paros no programados por desgaste del troquel y falta de mantenimiento preventivo; su disponibilidad es de solo 68%. Como alimenta a la línea de Estampado, frena a toda la planta. <b>Sugerencia:</b> overhaul del troquel (≈ $1.8 M) y mantenimiento preventivo semanal; recuperaría unos 10 puntos de OEE en la planta.</div>` : `<div class="callout good"><b>Planta en buen nivel.</b> ${oee >= 80 ? 'Cerca de la meta de 85%.' : 'Mejorando mes con mes.'} El siguiente paso es estandarizar cambios rápidos de molde (SMED) para ganar disponibilidad.</div>`;
+  el.innerHTML = `<div class="eyebrow">Planta · ${c.P.label}</div><h2>Planta ${s.name}</h2>
+  <div class="skpis">${sk('OEE', pct(oee), delta(oee - oeeP, { unit: 'pts' }))}${sk('OEE ' + MESL[c.last % 12], pct(m.oee[c.last]), `<span class="delta ${m.oee[c.last] < 70 ? 'bad' : 'flat'}">meta ${OEE_META}%</span>`)}${sk('Scrap', pct(sc), delta(sc - scP, { unit: 'pts', good: 'down' }))}${sk('Entregas a tiempo', pct(otd), delta(otd - otdP, { unit: 'pts' }))}</div>
+  ${note}
+  <h4>OEE mensual</h4>${legend([[SUC_COL[id], s.name], [C.ink, 'Meta', 1]])}${box('sh-1', 210)}
+  <h4>Equipos</h4><div class="table-wrap"><table><thead><tr><th>Equipo</th><th class="r">OEE</th><th class="r">Disponib.</th><th class="r">Rendim.</th><th class="r">Calidad</th></tr></thead><tbody>${eq.map(x => `<tr class="${x.oee < 60 ? 'hot' : ''}"><td>${dot(x.oee >= 80 ? 'g' : x.oee >= 70 ? 'y' : 'r')}<b>${x.name}</b></td><td class="r"><b>${pct(x.oee, 0)}</b></td><td class="r">${pct(x.a, 0)}</td><td class="r">${pct(x.p, 0)}</td><td class="r">${pct(x.q, 1)}</td></tr>`).join('')}</tbody></table></div>`;
+  trendChart('sheet', 'sh-1', [{ label: 'OEE', data: m.oee, color: SUC_COL[id], fill: id === 'LEO' ? 'rgba(224,53,43,.08)' : C.blueSoft }], { fmt: v => nf(v, 0) + '%', meta: OEE_META, min: 55, max: 95 });
+}
+
+/* ===== EVENTOS ===== */
+function fillPer() {
+  const y = state.year, o = (v, l) => `<option value="${v}" ${periodOk(y, v, state.cmp) ? '' : 'disabled'}>${l}</option>`;
+  document.getElementById('f-per').innerHTML = o('YTD', (y === 2026 ? 'Acumulado (ene–oct)' : 'Año completo') + (state.cmp === 'prev' ? ' (solo vs año ant.)' : '')) +
+    `<optgroup label="Trimestre">${[1, 2, 3, 4].map(q => o('Q' + q, q + 'º trimestre' + (y === 2026 && q === 4 ? ' (a oct)' : ''))).join('')}</optgroup>` +
+    `<optgroup label="Mes">${MES.map((_, k) => o('M' + k, cap(MESL[k]))).join('')}</optgroup>`;
+  document.getElementById('f-per').value = state.per;
+}
+function init() {
+  Chart.defaults.font.family = getComputedStyle(document.body).fontFamily;
+  ALERTS = computeAlerts();
+  document.getElementById('f-suc').innerHTML = `<option value="ALL">Todas las sucursales</option>` + SUC.map(s => `<option value="${s.id}">${s.name}</option>`).join('');
+  document.getElementById('f-yr').innerHTML = [2026, 2025].map(y => `<option value="${y}">${y}</option>`).join('');
+  fillPer();
+  document.getElementById('f-suc').addEventListener('change', e => { state.suc = e.target.value; render(); });
+  document.getElementById('f-per').addEventListener('change', e => { state.per = e.target.value; render(); });
+  document.getElementById('f-cmp').innerHTML = '<option value="yoy">vs año anterior</option><option value="prev">vs periodo anterior</option>';
+  document.getElementById('f-cmp').addEventListener('change', e => { state.cmp = e.target.value; if (!periodOk(state.year, state.per, state.cmp)) state.per = state.cmp === 'prev' ? lastFullQ(state.year) : 'YTD'; fillPer(); render(); });
+  document.getElementById('f-yr').addEventListener('change', e => { state.year = +e.target.value; if (!periodOk(state.year, state.per, state.cmp)) state.per = state.cmp === 'prev' ? lastFullQ(state.year) : 'YTD'; fillPer(); render(); });
+  document.addEventListener('click', e => {
+    const t = e.target.closest('[data-tab],[data-alert],[data-open],[data-go],[data-kpi]'); if (!t) return;
+    if (t.dataset.kpi) return goKpi(t.dataset.kpi);
+    if (t.dataset.tab) return setTab(t.dataset.tab);
+    if (t.dataset.go) return setTab(t.dataset.go);
+    if (t.dataset.alert) { const inSheet = !!t.closest('#sheet'); if (inSheet) closeSheet(); return ALERTS[+t.dataset.alert].go(); }
+    if (t.dataset.open) { const [ty, k] = t.dataset.open.split(':'); openDetail(ty, k, !t.dataset.push); }
+  });
+  document.getElementById('sheet-back').addEventListener('click', backSheet);
+  document.getElementById('sheet-x').addEventListener('click', closeSheet);
+  document.getElementById('scrim').addEventListener('click', closeSheet);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); if ((e.key === 'Enter' || e.key === ' ') && e.target.dataset && e.target.dataset.kpi) { e.preventDefault(); goKpi(e.target.dataset.kpi); } });
+  window.addEventListener('hashchange', () => setTab(location.hash.slice(1) || 'resumen'));
+  state.tab = TABS.find(t => t[0] === location.hash.slice(1)) ? location.hash.slice(1) : 'resumen';
+  render();
+}
+if (window.Chart) init(); else window.addEventListener('load', init);
+
+</script>
+<style>
+#ag-fab{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:35;display:flex;align-items:center;gap:10px;background:#fff;color:#0E3B57;border:1px solid #E6E9EE;border-radius:999px;padding:12px 18px 12px 12px;box-shadow:0 12px 30px rgba(14,59,87,.16);font-weight:600;font-size:14px}
+#ag-fab .orb{width:30px;height:30px;border-radius:50%;background:conic-gradient(from 0deg,#0071e3,#5e5ce6,#bf5af2,#ff375f,#ff9f0a,#0071e3);display:grid;place-items:center;animation:spin 6s linear infinite}
+#ag-fab .orb i{width:22px;height:22px;border-radius:50%;background:#fff;display:block}
+#ag-fab b{background:#F25C54;color:#fff;border-radius:999px;font-size:12px;padding:1px 7px;margin-left:2px}
+@keyframes spin{to{transform:rotate(360deg)}}
+#ag{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);background:#f5f5f7;z-index:43;transform:translateX(104%);transition:transform .4s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;box-shadow:none}
+.ag-open #ag{box-shadow:-20px 0 60px rgba(0,0,0,.15)}
+.ag-open #ag{transform:none}.ag-open #scrim{opacity:1;pointer-events:auto}
+#ag header{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid rgba(0,0,0,.08);background:rgba(245,245,247,.9);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+#ag header .orb{width:34px;height:34px;border-radius:50%;background:conic-gradient(from 0deg,#0071e3,#5e5ce6,#bf5af2,#ff375f,#ff9f0a,#0071e3)}
+#ag header h3{font-size:17px;margin:0}#ag header small{display:block;color:#6e6e73;font-size:12px;font-weight:500}
+#ag-x{margin-left:auto;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.06);text-align:center;color:#6e6e73}
+#ag-b{overflow:auto;padding:16px 18px 40px;flex:1}
+.ag-c{background:#fff;border-radius:16px;padding:14px;margin-bottom:10px;width:100%;display:block}
+.ag-c .meta{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:#86868b}
+.ag-c .t{font-weight:600;font-size:15px;line-height:1.3;margin-top:4px}
+.ag-c .s{font-size:13px;color:#6e6e73;margin-top:3px}
+.ag-c .go{display:inline-flex;margin-top:10px;font-size:13px;font-weight:600;color:#0071e3}
+.ag-steps{margin:12px 0 0;padding:0;list-style:none}
+.ag-steps li{display:flex;gap:10px;align-items:center;font-size:14px;padding:6px 0;color:#86868b}
+.ag-steps li.on{color:#1d1d1f}.ag-steps li i{width:20px;height:20px;border-radius:50%;border:2px solid #d2d2d7;display:grid;place-items:center;font-style:normal;font-size:11px;flex:none}
+.ag-steps li.on i{background:#34c759;border-color:#34c759;color:#fff}
+.ag-acts label{display:flex;gap:10px;align-items:flex-start;padding:8px 0;font-size:14px;border-bottom:1px solid rgba(0,0,0,.06)}
+.ag-acts label:last-child{border:0}.ag-acts input{margin-top:3px;accent-color:#0071e3}
+.ag-draft{background:#f5f5f7;border-radius:12px;padding:12px;font-size:13.5px;line-height:1.5;margin-top:10px;white-space:pre-line}
+.ag-btn{background:#0071e3;color:#fff;border-radius:999px;padding:11px 18px;font-weight:600;font-size:14px;margin-top:12px;display:inline-block}
+.ag-btn.s{background:rgba(0,0,0,.06);color:#0071e3;margin-left:6px}
+.ag-ok{display:flex;gap:8px;align-items:center;color:#248a3d;font-weight:600;font-size:14px;margin-top:10px}
+.ag-note{font-size:12px;color:#86868b;margin-top:14px}
+.ag-strip{background:#fff;border:1px solid #E6E9EE;border-radius:20px;padding:16px 18px;margin:0 0 18px;position:relative;overflow:hidden}
+.ag-strip::before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,#0071e3,#5e5ce6,#bf5af2,#ff375f,#ff9f0a)}
+.ag-sh{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.ag-sh .orb{width:22px;height:22px;border-radius:50%;background:conic-gradient(from 0deg,#0071e3,#5e5ce6,#bf5af2,#ff375f,#ff9f0a,#0071e3);flex:none}
+.ag-sh b{font-size:14px}.ag-sh small{color:#6e6e73;font-size:12.5px;margin-left:auto;white-space:nowrap}
+.ag-row{display:flex;gap:14px;align-items:center;padding:10px 0;border-top:1px solid #f0f0f2}
+.ag-row:first-of-type{border-top:0}
+.ag-row .dot{width:8px;height:8px;border-radius:50%;flex:none}
+.ag-row .tx{flex:1;min-width:0}.ag-row .tx b{display:block;font-size:14px;line-height:1.35}
+.ag-row .tx span{display:block;font-size:12.5px;color:#6e6e73;margin-top:2px}
+.ag-row .tx em{font-style:normal;color:#0071e3;font-weight:600}
+.ag-row button{flex:none;background:#0E3B57;color:#fff;border-radius:999px;padding:9px 16px;font-weight:600;font-size:13px;white-space:nowrap}
+@media (max-width:600px){.ag-row{flex-wrap:wrap;align-items:flex-start}.ag-row .dot{margin-top:6px}.ag-row .tx{flex-basis:calc(100% - 30px)}.ag-row button{margin-left:22px}.ag-sh small{display:none}}
+@media (prefers-reduced-motion:reduce){#ag-fab .orb{animation:none}}
+</style>
+<button id="ag-fab" type="button" aria-label="Abrir Agente Alexia"><span class="orb"><i></i></span>Agente Alexia<b id="ag-n"></b></button>
+<aside id="ag" aria-label="Agente Alexia"><header><span class="orb"></span><div><h3>Agente Alexia</h3><small>Detecta, propone y ejecuta con tu aprobación</small></div><button id="ag-x" type="button" aria-label="Cerrar">✕</button></header><div id="ag-b"></div></aside>
+<script>
+(function () {
+  const ACT = {
+    Cobranza: ['Enviar estado de cuenta y recordatorio por correo y WhatsApp', 'Agendar llamada con el cliente mañana a las 10:00', 'Pausar nuevos pedidos a crédito hasta regularizar'],
+    'Producción': ['Abrir orden de mantenimiento para el equipo crítico', 'Avisar al gerente de planta', 'Reprogramar los pedidos afectados'],
+    Ventas: ['Enviar resumen al gerente de la sucursal', 'Proponer plan de recuperación por cliente'],
+    Inventario: ['Proponer liquidación con descuento', 'Pedir a Compras frenar el reabasto de esos productos'],
+    Rentabilidad: ['Preparar propuesta de ajuste de precio', 'Avisar a Dirección Comercial'],
+  };
+  const el = id => document.getElementById(id);
+  const list = () => (typeof ALERTS !== 'undefined' ? ALERTS : []);
+  function open() { document.body.classList.add('ag-open'); home(); }
+  function close() { document.body.classList.remove('ag-open'); }
+  function home() {
+    const A = list();
+    el('ag-b').innerHTML = `<p style="margin:0 0 12px;font-size:14px;color:#6e6e73">Revisé ventas, cobranza, inventario y producción. Encontré ${A.length} puntos que requieren acción.</p>` +
+      A.map((a, i) => `<button class="ag-c" data-ag="${i}" type="button"><div class="meta">${a.area} · ${a.sev === 'alta' ? 'Prioridad alta' : 'Atención'}</div><div class="t">${a.title}</div><div class="s">${a.sub}</div><span class="go">Ver qué propongo ›</span></button>`).join('') +
+      `<p class="ag-note">Demo: el agente prepara las acciones, pero no envía mensajes ni crea órdenes reales.</p>`;
+  }
+  function detail(i) {
+    const a = list()[i], acts = ACT[a.area] || ['Avisar al responsable'];
+    el('ag-b').innerHTML = `<button type="button" id="ag-back" style="color:#0071e3;font-weight:500;margin-bottom:10px">‹ Alertas</button>
+      <div class="ag-c"><div class="meta">Lo que detecté</div><div class="t">${a.title}</div><div class="s">${a.sub}</div><button type="button" class="go" id="ag-see">Ver en el tablero ›</button></div>
+      <div class="ag-c"><div class="meta">Lo que propongo</div><div class="ag-acts">${acts.map((t, k) => `<label><input type="checkbox" checked id="ag-a${k}">${t}</label>`).join('')}</div>
+      <button type="button" class="ag-btn" id="ag-run">Preparar acciones</button><div id="ag-out"></div></div>`;
+    el('ag-back').onclick = home;
+    el('ag-see').onclick = () => { close(); a.go(); };
+    el('ag-run').onclick = () => run(a, acts);
+  }
+  function run(a, acts) {
+    const chosen = acts.filter((_, k) => el('ag-a' + k) && el('ag-a' + k).checked);
+    if (!chosen.length) { el('ag-out').innerHTML = '<p class="ag-note">Elige al menos una acción.</p>'; return; }
+    el('ag-run').remove();
+    const steps = ['Analizando datos del tablero', 'Redactando mensajes', 'Preparando tareas y responsables'];
+    el('ag-out').innerHTML = `<ul class="ag-steps">${steps.map((s, k) => `<li id="ag-s${k}"><i>✓</i>${s}</li>`).join('')}</ul>`;
+    steps.forEach((_, k) => setTimeout(() => { const li = el('ag-s' + k); if (li) li.classList.add('on'); }, 500 + k * 650));
+    setTimeout(() => {
+      const box = el('ag-out'); if (!box) return;
+      box.innerHTML += `<div class="ag-draft"><b>Borrador listo para tu revisión</b>\n${a.area === 'Cobranza' ? 'Hola, le compartimos su estado de cuenta actualizado. Tenemos un saldo vencido pendiente; ¿podemos agendar mañana a las 10:00 para acordar fechas de pago?' : 'Resumen: ' + a.title + '\nAcciones: ' + chosen.join('; ') + '.'}</div>
+      <button type="button" class="ag-btn" id="ag-ok">Aprobar y ejecutar</button><button type="button" class="ag-btn s" id="ag-cancel">Descartar</button>`;
+      el('ag-ok').onclick = () => { el('ag-ok').remove(); el('ag-cancel').remove(); box.innerHTML += `<div class="ag-ok">✓ ${chosen.length} ${chosen.length === 1 ? 'acción ejecutada' : 'acciones ejecutadas'} (demo)</div>`; };
+      el('ag-cancel').onclick = home;
+    }, 500 + steps.length * 650 + 200);
+  }
+  /* insights del agente dentro de cada pestaña */
+  const AREA_TAB = { resumen: null, ventas: ['Ventas'], cobranza: ['Cobranza'], inventario: ['Inventario'], produccion: ['Producción'], edr: ['Rentabilidad'], flujo: ['Cobranza', 'Inventario'] };
+  const esc2 = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  function strip() {
+    const main = el('main'); if (!main || typeof state === 'undefined') return;
+    const want = AREA_TAB[state.tab];
+    let rows = list().map((a, i) => [a, i]).filter(([a]) => (state.suc === 'ALL' || !a.suc || a.suc === state.suc));
+    rows = want ? rows.filter(([a]) => want.includes(a.area)) : rows.filter(([a]) => a.sev === 'alta');
+    rows = rows.slice(0, 3);
+    if (!rows.length) return;
+    const html = `<div class="ag-strip" role="region" aria-label="Insights del Agente Alexia"><div class="ag-sh"><span class="orb"></span><b>Agente Alexia</b><small>${rows.length === 1 ? '1 acción sugerida' : rows.length + ' acciones sugeridas'}</small></div>` +
+      rows.map(([a, i]) => `<div class="ag-row"><span class="dot" style="background:${a.sev === 'alta' ? '#ff3b30' : '#ff9f0a'}"></span><div class="tx"><b>${esc2(a.title)}</b><span><em>Propongo:</em> ${esc2((ACT[a.area] || ['Avisar al responsable'])[0])}.</span></div><button type="button" data-agi="${i}">Resolver</button></div>`).join('') + '</div>';
+    const h = main.querySelector('section.head');
+    if (h) h.insertAdjacentHTML('afterend', html); else main.insertAdjacentHTML('afterbegin', html);
+  }
+  function boot() {
+    const n = list().filter(a => a.sev === 'alta').length; el('ag-n').textContent = n;
+    el('ag-fab').onclick = open; el('ag-x').onclick = close;
+    el('scrim').addEventListener('click', close);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+    el('ag-b').addEventListener('click', e => { const b = e.target.closest('[data-ag]'); if (b) detail(+b.dataset.ag); });
+    document.addEventListener('click', e => { const b = e.target.closest('[data-agi]'); if (b) { e.stopPropagation(); document.body.classList.add('ag-open'); detail(+b.dataset.agi); } }, true);
+    if (typeof render === 'function') { const r0 = render; render = function () { r0.apply(this, arguments); strip(); }; strip(); }
+  }
+  if (document.readyState === 'complete') setTimeout(boot, 50); else window.addEventListener('load', () => setTimeout(boot, 50));
+})();
+</script>
+</body>
+</html>

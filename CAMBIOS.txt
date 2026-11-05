@@ -1,0 +1,27 @@
+ALEXIA · VERSIÓN CON RESERVAS PROPIAS · 5 DE NOVIEMBRE DE 2026
+
+- Agenda conectada al formulario y a una API propia, sin Outlook.
+- Guardado real de fecha, hora, nombre, empresa, correo, teléfono opcional,
+  área, reto opcional y modalidad, con folio único y estado registrada.
+- Confirmación en modal solo después de guardar con éxito.
+- Panel privado /admin con filtros, exportación CSV y cambios de estado.
+- Un calendario compartido: una reserva activa por horario. Cancelar libera
+  el horario; confirmar una cancelada falla si alguien ya tomó ese espacio.
+- Reintentos de la misma solicitud sin duplicar registros.
+- PostgreSQL/Neon para Vercel; SQLite persistente solo para pruebas locales.
+- Credenciales de administrador sin valores predeterminados; secretos fuera
+  del código público; sesión protegida y respuestas privadas sin caché.
+- Conserva ajustes responsivos, corrección XSS del validador y tema oscuro.
+- Menú Diagnóstico, botón Agenda tu diagnóstico y nuevo encabezado de agenda.
+- Se eliminó la guía anterior de integración con Outlook, ya reemplazada por
+  RESERVAS_VERCEL.md.
+
+VALIDACIÓN
+9 pruebas automatizadas aprobadas. Flujo HTTP local aprobado: guardar,
+rechazar doble reserva, iniciar sesión, listar y exportar; archivos privados
+no disponibles como rutas estáticas. Comprobación sintáctica de scripts.
+Dependencias de producción: npm audit no reportó vulnerabilidades conocidas.
+
+No se ha desplegado ni conectado una base remota real. Es necesario completar
+la configuración de Vercel indicada en RESERVAS_VERCEL.md.
+La revisión visual en navegador sigue pendiente por restricciones del entorno.

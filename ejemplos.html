@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="es-MX"><head><script>(function(){var t=new URLSearchParams(location.search).get("theme");if(t)document.documentElement.setAttribute("data-theme",t);addEventListener("message",function(e){if(e.data&&e.data.alexiaTheme)document.documentElement.setAttribute("data-theme",e.data.alexiaTheme)})})()</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ejemplos · Alexia SCG</title>
+<style>
+:root{--bg:#fff;--fg:#1d1d1f;--fg2:#6e6e73;--fg3:#86868b;--line:#E6E9EE;--soft:#f5f5f7;--blue:#0071e3;--navy:#0E3B57;--green:#248a3d;--gbg:rgba(52,199,89,.13);--orange:#c26a00;--obg:rgba(255,159,10,.15);--red:#d70015;--rbg:rgba(255,59,48,.12);
+--font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Arial,sans-serif;--card:#fff;color-scheme:light}
+:root[data-theme="dark"]{--bg:#000;--fg:#f5f5f7;--fg2:#a1a1a6;--fg3:#8e8e93;--line:#2c2c2e;--soft:#1c1c1e;--card:#111113;--blue:#2997ff;--navy:#E9EEF3;--green:#30d158;--orange:#ff9f0a;--red:#ff6961;color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.45 var(--font);letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+select{font:inherit}
+h1,h2,h3{margin:0;letter-spacing:-.03em;text-wrap:balance}
+.wrap{max-width:1180px;margin:0 auto;padding:22px max(20px,env(safe-area-inset-right,0px)) 48px max(20px,env(safe-area-inset-left,0px))}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:8px}
+.top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:16px}
+.brand i{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:#fff;font-style:normal;font-weight:700;font-size:13px}
+.tag{font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px;background:var(--soft);color:var(--fg2)}
+.top .sel{margin-left:auto;display:flex;gap:8px}
+.top select{background:var(--soft);border:0;border-radius:999px;padding:9px 34px 9px 14px;font-size:14px;color:var(--fg);appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%236e6e73' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center}
+.ey{font-size:13px;font-weight:600;color:var(--fg3)}
+h1{font-size:clamp(30px,4.4vw,46px);line-height:1.05;margin-top:6px}
+.lede{font-size:17px;color:var(--fg2);margin:10px 0 0;max-width:62ch}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+@media (max-width:900px){.kpis{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.kpis{grid-template-columns:1fr}}
+.kpi .l{font-size:13px;color:var(--fg2);display:flex;justify-content:space-between;gap:8px;align-items:center}
+.kpi .v{font-size:30px;font-weight:700;letter-spacing:-.03em;margin-top:6px;font-variant-numeric:tabular-nums}
+.kpi .m{font-size:12.5px;color:var(--fg3);margin-top:2px}
+.kpi .a{font-size:13px;margin-top:12px;padding-top:10px;border-top:1px solid var(--line);color:var(--fg)}
+.kpi .a b{color:var(--blue);font-weight:600}
+.pill{font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.pill.ok{background:var(--gbg);color:var(--green)}.pill.at{background:var(--obg);color:var(--orange)}.pill.rk{background:var(--rbg);color:var(--red)}
+.grid2{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:12px;margin-top:12px}
+@media (max-width:860px){.grid2{grid-template-columns:1fr}}
+.card h3{font-size:17px;margin-bottom:12px}
+.bars{display:grid;gap:10px}
+.bar{display:grid;grid-template-columns:110px 1fr 70px;gap:10px;align-items:center;font-size:13.5px}
+.bar .t{height:12px;border-radius:999px;background:var(--soft);position:relative;overflow:hidden}
+.bar .t i{position:absolute;inset:0 auto 0 0;border-radius:999px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.bar .t s{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--fg);opacity:.5}
+.bar .n{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{font-size:11.5px;font-weight:600;color:var(--fg3);text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+td{padding:10px 6px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+td.r,th.r{text-align:right}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+/* agente */
+.ag{border:1px solid var(--line);border-radius:20px;padding:16px 18px;margin-top:18px;position:relative;overflow:hidden}
+.ag::before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,#0071e3,#5e5ce6,#bf5af2,#ff375f,#ff9f0a)}
+.ag-h{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.orb{width:22px;height:22px;border-radius:50%;background:conic-gradient(from 0deg,#0071e3,#5e5ce6,#bf5af2,#ff375f,#ff9f0a,#0071e3);flex:none;animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ag-h b{font-size:14px}.ag-h small{margin-left:auto;color:var(--fg3);font-size:12.5px}
+.ins{display:flex;gap:14px;align-items:center;padding:11px 0;border-top:1px solid var(--line)}
+.ins:first-of-type{border-top:0}
+.ins .dot{margin:0;flex:none}
+.ins .tx{flex:1;min-width:0}.ins .tx b{display:block;font-size:14px;line-height:1.35}.ins .tx span{display:block;font-size:12.5px;color:var(--fg2);margin-top:2px}
+.ins .tx em{font-style:normal;color:var(--blue);font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--navy);color:var(--bg);border-radius:999px;padding:9px 16px;font-weight:600;font-size:13px;white-space:nowrap;flex:none}
+.btn.s{background:var(--soft);color:var(--navy)}
+.done{color:var(--green);font-weight:600;font-size:13px;white-space:nowrap}
+@media (max-width:600px){.ins{flex-wrap:wrap}.ins .tx{flex-basis:calc(100% - 24px)}.ins .btn,.ins .done{margin-left:22px}.bar{grid-template-columns:90px 1fr 60px}}
+.note{font-size:12px;color:var(--fg3);margin-top:16px}
+/* advisory / labs */
+.qs{display:grid;gap:10px}
+.q{border:1px solid var(--line);border-radius:16px;padding:14px}
+.q b{display:block;font-size:14.5px}.q small{color:var(--fg2);font-size:12.5px}
+.opts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:10px}
+@media (max-width:560px){.opts{grid-template-columns:1fr 1fr}}
+.opts button{border:1px solid var(--line);border-radius:12px;padding:9px 10px;font-size:12.5px;line-height:1.3;color:var(--fg2);min-height:44px}
+.opts button[aria-pressed="true"]{border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue);color:var(--fg);background:rgba(0,113,227,.05)}
+.big{font-size:44px;font-weight:700;letter-spacing:-.04em;line-height:1}
+.lvl{display:flex;gap:6px;margin-top:12px}.lvl i{flex:1;height:8px;border-radius:999px;background:var(--soft)}
+.recs{display:grid;gap:8px;margin-top:14px}
+.rec{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;padding:10px 12px;border-radius:14px;background:var(--soft)}
+.rec i{font-style:normal;font-weight:700;color:var(--blue);flex:none}
+.chk{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.chk:last-child{border:0}
+.chk input{width:18px;height:18px;accent-color:var(--blue);flex:none}
+.chk .pill{margin-left:auto}
+.lanes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:700px){.lanes{grid-template-columns:1fr}}
+.lane{background:var(--soft);border-radius:16px;padding:12px;min-height:120px}
+.lane h4{margin:0 0 8px;font-size:12.5px;color:var(--fg2);font-weight:600}
+.it{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:9px 11px;font-size:13px;margin-bottom:6px;animation:pop .35s ease both}
+.it small{display:block;color:var(--fg3);font-size:11.5px}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}}
+.mx{position:relative;aspect-ratio:1.4;border:1px solid var(--line);border-radius:16px;background:linear-gradient(#fff,#fff) padding-box;overflow:hidden}
+.mx::before,.mx::after{content:"";position:absolute;background:var(--line)}
+.mx::before{left:50%;top:0;bottom:0;width:1px}.mx::after{top:50%;left:0;right:0;height:1px}
+.mx .lb{position:absolute;font-size:11px;font-weight:600;color:var(--fg3)}
+.mx .pt{position:absolute;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:11px;font-weight:700;transition:all .4s}
+.rng{display:grid;gap:14px}
+.rg{display:grid;gap:6px}
+.rg .h{display:flex;justify-content:space-between;font-size:13.5px}
+.rg .h b{font-variant-numeric:tabular-nums}
+.rg input{width:100%;accent-color:var(--blue)}
+.verdict{border-radius:18px;padding:18px;margin-top:14px}
+.verdict b{font-size:22px;letter-spacing:-.02em;display:block}
+.steps{display:flex;gap:6px;margin-top:16px;flex-wrap:wrap}
+.steps span{font-size:12px;font-weight:600;padding:6px 11px;border-radius:999px;background:var(--soft);color:var(--fg3)}
+.steps span.on{background:var(--navy);color:var(--bg)}
+.seg{display:inline-flex;background:var(--soft);border-radius:10px;padding:3px;flex-wrap:wrap}
+.seg button{padding:7px 12px;border-radius:8px;font-size:13px;font-weight:500;color:var(--fg2)}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--fg);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.radar{width:100%;max-width:300px;display:block;margin:0 auto}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style><style id="responsive-fixes">
+/* Keep document scrolling on the root; constrain flexible children. */
+html{overflow-x:clip}
+body{min-width:0;overflow-wrap:break-word}
+*,*::before,*::after{box-sizing:border-box}
+main,section,article,form,fieldset{min-width:0}
+img,video{max-width:100%;height:auto}
+input,select,textarea{min-width:0;max-width:100%}
+iframe{display:block;min-width:0}
+@media(max-width:600px){input,select,textarea{font-size:16px}}
+</style><style></style><link rel="stylesheet" href="css/theme-refinements.css">
+</head><body data-page="ejemplos">
+<div class="wrap" id="app"></div>
+<script>
+const $ = s => document.querySelector(s);
+const nf = (v, d = 0) => v.toLocaleString('es-MX', { minimumFractionDigits: d, maximumFractionDigits: d });
+const money = v => v >= 1e6 ? '$' + nf(v / 1e6, 2) + ' M' : '$' + nf(v / 1e3, 0) + ' k';
+const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const COLOR = { ok: '#34c759', at: '#ff9f0a', rk: '#ff3b30' };
+const LBL = { ok: 'En meta', at: 'Atención', rk: 'Riesgo' };
+const app = $('#app');
+const NOTE = '<p class="note">Datos de ejemplo · empresa y cifras ficticias. El agente prepara las acciones; en esta demo no envía mensajes reales.</p>';
+
+/* ===================== TABLEROS POR INDUSTRIA ===================== */
+/* Cada sitio tiene sus datos base; los totales se calculan, no se escriben a mano. */
+const IND = {
+  restaurantes: {
+    co: 'Grupo Fogón', ini: 'GF', col: '#F25C54', ey: 'Restaurantes · Semana 44', title: 'Tus restaurantes, esta semana.', unit: 'Sucursal',
+    sites: [
+      { n: 'Juriquilla', venta: 1240000, meta: 1180000, tickets: 3900, food: 29.1, lab: 23.8, srv: 11, cal: 4.7, merma: 2.1 },
+      { n: 'Centro', venta: 980000, meta: 1050000, tickets: 3720, food: 33.8, lab: 26.9, srv: 15, cal: 4.3, merma: 3.6 },
+      { n: 'Zibatá', venta: 860000, meta: 820000, tickets: 2610, food: 30.2, lab: 24.5, srv: 12, cal: 4.6, merma: 2.4 },
+      { n: 'El Marqués', venta: 720000, meta: 790000, tickets: 2480, food: 31.5, lab: 27.8, srv: 13, cal: 4.4, merma: 2.9 },
+      { n: 'Corregidora', venta: 640000, meta: 620000, tickets: 2050, food: 29.6, lab: 24.1, srv: 10, cal: 4.8, merma: 1.9 },
+    ],
+    kpis: [
+      { k: 'venta', l: 'Ventas de la semana', f: 'sum', fmt: money, goal: s => s.meta, gfmt: v => 'meta ' + money(v), st: (v, g) => v >= g ? 'ok' : v >= g * .95 ? 'at' : 'rk', act: { ok: 'Mantén la promoción de la semana.', at: 'Refuerza la venta en horas pico.', rk: 'Lanza una promoción de fin de semana.' } },
+      { k: 'ticket', l: 'Ticket promedio', calc: s => s.venta / s.tickets, f: 'ratio', fmt: v => '$' + nf(v, 0), goal: () => 300, gfmt: v => 'meta $' + v, st: (v, g) => v >= g ? 'ok' : v >= g * .93 ? 'at' : 'rk', act: { ok: 'Sigue con la venta sugerida de postres.', at: 'Ofrece combo con bebida.', rk: 'Capacita a meseros en venta sugerida.' } },
+      { k: 'food', l: 'Costo de alimentos', f: 'w', fmt: v => nf(v, 1) + '%', goal: () => 30, gfmt: v => 'meta ≤ ' + v + '% de la venta', low: 1, st: (v, g) => v <= g ? 'ok' : v <= g + 2 ? 'at' : 'rk', act: { ok: 'Costo bajo control.', at: 'Revisa porciones de los 5 platillos más vendidos.', rk: 'Revisa porciones y mermas con el chef hoy.' } },
+      { k: 'lab', l: 'Costo de personal', f: 'w', fmt: v => nf(v, 1) + '%', goal: () => 25, gfmt: v => 'meta ≤ ' + v + '% de la venta', low: 1, st: (v, g) => v <= g ? 'ok' : v <= g + 2 ? 'at' : 'rk', act: { ok: 'Turnos bien ajustados.', at: 'Ajusta turnos de lunes a miércoles.', rk: 'Rediseña turnos según afluencia por hora.' } },
+      { k: 'srv', l: 'Tiempo de servicio', f: 'w', fmt: v => nf(v, 0) + ' min', goal: () => 12, gfmt: v => 'meta ≤ ' + v + ' min', low: 1, st: (v, g) => v <= g ? 'ok' : v <= g + 2 ? 'at' : 'rk', act: { ok: 'Servicio ágil.', at: 'Agrega un apoyo en cocina en horas pico.', rk: 'Revisa el flujo de cocina en hora pico.' } },
+      { k: 'cal', l: 'Calificación de clientes', f: 'w', fmt: v => nf(v, 1) + ' / 5', goal: () => 4.5, gfmt: v => 'meta ≥ ' + v, st: (v, g) => v >= g ? 'ok' : v >= g - .2 ? 'at' : 'rk', act: { ok: 'Pide reseñas a clientes satisfechos.', at: 'Responde reseñas negativas en 24 h.', rk: 'Contacta a los clientes inconformes hoy.' } },
+    ],
+    chart: { k: 'venta', l: 'Ventas vs meta por sucursal', fmt: money, goal: s => s.meta },
+    cols: [['Ventas', s => money(s.venta), 'r'], ['Costo alim.', s => nf(s.food, 1) + '%', 'r'], ['Servicio', s => s.srv + ' min', 'r'], ['Calif.', s => nf(s.cal, 1), 'r']],
+  },
+  retail: {
+    co: 'Casa Norte', ini: 'CN', col: '#2D7FF9', ey: 'Comercio minorista · Octubre', title: 'Tus tiendas, este mes.', unit: 'Tienda',
+    sites: [
+      { n: 'Antea', venta: 4850000, meta: 4600000, visitas: 61000, tickets: 9800, mb: 36.2, dinv: 48, agot: 12 },
+      { n: 'Plaza del Parque', venta: 3920000, meta: 4100000, visitas: 58000, tickets: 8100, mb: 33.9, dinv: 63, agot: 31 },
+      { n: 'Juriquilla', venta: 3380000, meta: 3250000, visitas: 39000, tickets: 6900, mb: 35.7, dinv: 51, agot: 15 },
+      { n: 'San Juan del Río', venta: 2210000, meta: 2450000, visitas: 33000, tickets: 4900, mb: 32.8, dinv: 72, agot: 27 },
+    ],
+    kpis: [
+      { k: 'venta', l: 'Ventas del mes', f: 'sum', fmt: money, goal: s => s.meta, gfmt: v => 'meta ' + money(v), st: (v, g) => v >= g ? 'ok' : v >= g * .95 ? 'at' : 'rk', act: { ok: 'Repite la exhibición de temporada.', at: 'Activa campaña a clientes frecuentes.', rk: 'Activa promoción y campaña por WhatsApp.' } },
+      { k: 'conv', l: 'Conversión', calc: s => s.tickets / s.visitas * 100, f: 'ratio2', fmt: v => nf(v, 1) + '%', goal: () => 16, gfmt: v => 'meta ≥ ' + v + '% de visitantes compran', st: (v, g) => v >= g ? 'ok' : v >= g - 2 ? 'at' : 'rk', act: { ok: 'Buen trabajo en piso de venta.', at: 'Refuerza personal en horas pico.', rk: 'Revisa atención en piso y filas en caja.' } },
+      { k: 'ticket', l: 'Ticket promedio', calc: s => s.venta / s.tickets, f: 'ratio', fmt: v => '$' + nf(v, 0), goal: () => 480, gfmt: v => 'meta $' + v, st: (v, g) => v >= g ? 'ok' : v >= g * .93 ? 'at' : 'rk', act: { ok: 'Sigue con la venta complementaria.', at: 'Agrega productos de impulso en caja.', rk: 'Arma paquetes para subir el ticket.' } },
+      { k: 'mb', l: 'Margen bruto', f: 'w', fmt: v => nf(v, 1) + '%', goal: () => 35, gfmt: v => 'meta ≥ ' + v + '%', st: (v, g) => v >= g ? 'ok' : v >= g - 1.5 ? 'at' : 'rk', act: { ok: 'Margen sano.', at: 'Revisa descuentos fuera de política.', rk: 'Limita descuentos y revisa precios.' } },
+      { k: 'dinv', l: 'Días de inventario', f: 'w', fmt: v => nf(v, 0) + ' días', goal: () => 55, gfmt: v => 'meta ≤ ' + v + ' días', low: 1, st: (v, g) => v <= g ? 'ok' : v <= g + 8 ? 'at' : 'rk', act: { ok: 'Inventario en su nivel.', at: 'Frena compras de lo que no se mueve.', rk: 'Liquida lo que lleva más de 90 días.' } },
+      { k: 'agot', l: 'Productos agotados', f: 'sum', fmt: v => nf(v, 0), goal: () => 60, gfmt: v => 'meta ≤ ' + v + ' en total', low: 1, st: (v, g) => v <= g ? 'ok' : v <= g * 1.2 ? 'at' : 'rk', act: { ok: 'Surtido completo.', at: 'Genera pedido de los agotados top.', rk: 'Pedido urgente de los más vendidos.' } },
+    ],
+    chart: { k: 'venta', l: 'Ventas vs meta por tienda', fmt: money, goal: s => s.meta },
+    cols: [['Ventas', s => money(s.venta), 'r'], ['Conversión', s => nf(s.tickets / s.visitas * 100, 1) + '%', 'r'], ['Margen', s => nf(s.mb, 1) + '%', 'r'], ['Agotados', s => s.agot, 'r']],
+  },
+  logistica: {
+    co: 'TransBajío', ini: 'TB', col: '#14B8A6', ey: 'Logística y transporte · Octubre', title: 'Tu flota, este mes.', unit: 'Base',
+    sites: [
+      { n: 'Querétaro', viajes: 1420, tiempo: 1349, km: 382000, costo: 7260000, util: 86, rend: 2.9, inc: 6 },
+      { n: 'Celaya', viajes: 860, tiempo: 757, km: 241000, costo: 4870000, util: 74, rend: 2.6, inc: 9 },
+      { n: 'San Luis Potosí', viajes: 640, tiempo: 614, km: 205000, costo: 3790000, util: 81, rend: 2.8, inc: 3 },
+    ],
+    kpis: [
+      { k: 'otd', l: 'Entregas a tiempo', calc: s => s.tiempo / s.viajes * 100, f: 'ratio3', fmt: v => nf(v, 1) + '%', goal: () => 95, gfmt: v => 'meta ≥ ' + v + '%', st: (v, g) => v >= g ? 'ok' : v >= g - 4 ? 'at' : 'rk', act: { ok: 'Cumplimiento sólido.', at: 'Revisa rutas con más retrasos.', rk: 'Reasigna rutas críticas y avisa a clientes.' } },
+      { k: 'ckm', l: 'Costo por km', calc: s => s.costo / s.km, f: 'ratio4', fmt: v => '$' + nf(v, 2), goal: () => 19.5, gfmt: v => 'meta ≤ $' + v, low: 1, st: (v, g) => v <= g ? 'ok' : v <= g * 1.04 ? 'at' : 'rk', act: { ok: 'Costo bajo control.', at: 'Revisa casetas y rutas alternas.', rk: 'Revisa consumo y kilómetros en vacío.' } },
+      { k: 'util', l: 'Uso de la flota', f: 'wv', fmt: v => nf(v, 0) + '%', goal: () => 82, gfmt: v => 'meta ≥ ' + v + '%', st: (v, g) => v >= g ? 'ok' : v >= g - 5 ? 'at' : 'rk', act: { ok: 'Flota bien aprovechada.', at: 'Consolida cargas parciales.', rk: 'Mueve unidades ociosas a otra base.' } },
+      { k: 'rend', l: 'Rendimiento de diésel', f: 'wk', fmt: v => nf(v, 2) + ' km/l', goal: () => 2.8, gfmt: v => 'meta ≥ ' + v + ' km/l', st: (v, g) => v >= g ? 'ok' : v >= g - .2 ? 'at' : 'rk', act: { ok: 'Buen consumo.', at: 'Capacita en manejo eficiente.', rk: 'Revisa unidades con bajo rendimiento.' } },
+      { k: 'inc', l: 'Incidencias', f: 'sum', fmt: v => nf(v, 0), goal: () => 15, gfmt: v => 'meta ≤ ' + v + ' al mes', low: 1, st: (v, g) => v <= g ? 'ok' : v <= g * 1.2 ? 'at' : 'rk', act: { ok: 'Operación segura.', at: 'Refuerza revisión previa al viaje.', rk: 'Revisa causas con supervisores hoy.' } },
+      { k: 'viajes', l: 'Viajes realizados', f: 'sum', fmt: v => nf(v, 0), goal: () => 0, gfmt: () => 'en el mes', st: () => 'ok', act: { ok: 'Volumen del mes.' } },
+    ],
+    chart: { k: 'otd', l: 'Entregas a tiempo por base', fmt: v => nf(v, 1) + '%', goal: () => 95, calc: s => s.tiempo / s.viajes * 100, max: 100 },
+    cols: [['Viajes', s => nf(s.viajes, 0), 'r'], ['A tiempo', s => nf(s.tiempo / s.viajes * 100, 1) + '%', 'r'], ['Costo/km', s => '$' + nf(s.costo / s.km, 2), 'r'], ['Uso flota', s => s.util + '%', 'r']],
+  },
+};
+function agg(D, ids, k) {
+  const ss = D.sites.filter((_, i) => ids.includes(i)), K = D.kpis.find(x => x.k === k);
+  const W = s => s.venta || s.km || 1;
+  if (K.calc) { // razón de totales
+    const t = {}; Object.keys(ss[0]).forEach(f => { if (typeof ss[0][f] === 'number') t[f] = ss.reduce((a, s) => a + s[f], 0); });
+    return K.calc(t);
+  }
+  if (K.f === 'sum') return ss.reduce((a, s) => a + s[k], 0);
+  if (K.f === 'wv') { const tv = ss.reduce((a, s) => a + s.viajes, 0); return ss.reduce((a, s) => a + s[k] * s.viajes, 0) / tv; }
+  const tw = ss.reduce((a, s) => a + W(s), 0); return ss.reduce((a, s) => a + s[k] * W(s), 0) / tw;
+}
+function goalOf(D, ids, K) { const ss = D.sites.filter((_, i) => ids.includes(i)); return K.k === 'venta' ? ss.reduce((a, s) => a + s.meta, 0) : K.goal(ss[0]); }
+function dash(key) {
+  const D = IND[key]; let sel = 'ALL'; const done = new Set();
+  function draw() {
+    const ids = sel === 'ALL' ? D.sites.map((_, i) => i) : [+sel];
+    const scope = sel === 'ALL' ? 'Todas las ' + (D.unit === 'Base' ? 'bases' : D.unit === 'Tienda' ? 'tiendas' : 'sucursales') : D.sites[+sel].n;
+    const K = D.kpis.map(k => { const v = agg(D, ids, k.k), g = goalOf(D, ids, k); const st = k.st(v, g); return { k, v, g, st }; });
+    // insights: peor sitio por KPI con meta
+    const ins = [];
+    D.kpis.filter(k => k.k !== 'viajes').forEach(k => {
+      D.sites.forEach((s, i) => { if (!ids.includes(i)) return; const v = agg(D, [i], k.k), g = goalOf(D, [i], k), st = k.st(v, g); if (st === 'rk') ins.push({ i, k, v, g, s }); });
+    });
+    ins.sort((a, b) => Math.abs(b.v - b.g) / Math.abs(b.g || 1) - Math.abs(a.v - a.g) / Math.abs(a.g || 1));
+    const top = ins.slice(0, 3);
+    const c = D.chart, cv = i => c.calc ? c.calc(D.sites[i]) : D.sites[i][c.k], mx = c.max || Math.max(...D.sites.map((s, i) => Math.max(cv(i), c.goal(s)))) * 1.08;
+    const rows = D.sites.map((s, i) => ({ s, i, st: K.map(x => x.k.st(agg(D, [i], x.k.k), goalOf(D, [i], x.k.k === 'venta' ? x.k : x.k))) }));
+    app.innerHTML = `
+      <div class="top"><div class="brand"><i style="background:${D.col}">${D.ini}</i>${D.co}</div><span class="tag">Datos de ejemplo</span>
+        <div class="sel"><select id="s" aria-label="${D.unit}"><option value="ALL">Todas</option>${D.sites.map((s, i) => `<option value="${i}" ${String(i) === sel ? 'selected' : ''}>${s.n}</option>`).join('')}</select></div></div>
+      <div class="ey">${D.ey} · ${scope}</div><h1>${D.title}</h1>
+      <p class="lede">${K.filter(x => x.st === 'ok').length} de ${K.length} indicadores en meta. ${top.length ? 'El agente encontró ' + top.length + (top.length === 1 ? ' punto' : ' puntos') + ' para actuar hoy.' : 'Sin focos rojos.'}</p>
+      ${top.length ? `<div class="ag"><div class="ag-h"><span class="orb"></span><b>Agente Alexia</b><small>${top.length} ${top.length === 1 ? 'acción sugerida' : 'acciones sugeridas'}</small></div>
+        ${top.map((x, j) => { const id = key + x.i + x.k.k; return `<div class="ins"><span class="dot" style="background:#ff3b30"></span><div class="tx"><b>${esc(x.s.n)}: ${x.k.l.toLowerCase()} en ${x.k.fmt(x.v)} (${x.k.gfmt(x.g)}).</b><span><em>Propongo:</em> ${esc(x.k.act.rk)}</span></div>${done.has(id) ? '<span class="done">✓ Tarea creada</span>' : `<button class="btn" data-do="${id}">Resolver</button>`}</div>`; }).join('')}</div>` : ''}
+      <div class="kpis">${K.map(({ k, v, g, st }) => `<div class="card kpi"><div class="l">${k.l}<span class="pill ${st}">${LBL[st]}</span></div><div class="v">${k.fmt(v)}</div><div class="m">${k.gfmt(g)}</div><div class="a"><b>Qué hacer:</b> ${esc(k.act[st] || k.act.ok)}</div></div>`).join('')}</div>
+      <div class="grid2">
+        <div class="card"><h3>${c.l}</h3><div class="bars">${D.sites.map((s, i) => { const v = cv(i), g = c.goal(s), ok = v >= g; return `<div class="bar"><span>${s.n}</span><span class="t"><i style="width:${v / mx * 100}%;background:${ok ? '#34c759' : '#ff9f0a'}"></i><s style="left:${g / mx * 100}%"></s></span><span class="n">${c.fmt(v)}</span></div>`; }).join('')}</div><p class="note" style="margin-top:12px">La línea vertical es la meta.</p></div>
+        <div class="card"><h3>Semáforo por ${D.unit.toLowerCase()}</h3><div style="overflow-x:auto"><table><thead><tr><th>${D.unit}</th>${D.cols.map(x => `<th class="${x[2]}">${x[0]}</th>`).join('')}</tr></thead><tbody>
+          ${rows.map(r => { const bad = r.st.filter(x => x === 'rk').length, at = r.st.filter(x => x === 'at').length, c2 = bad ? 'rk' : at ? 'at' : 'ok'; return `<tr><td><span class="dot" style="background:${COLOR[c2]}"></span>${r.s.n}</td>${D.cols.map(x => `<td class="${x[2]}">${x[1](r.s)}</td>`).join('')}</tr>`; }).join('')}
+        </tbody></table></div></div>
+      </div>${NOTE}`;
+    $('#s').onchange = e => { sel = e.target.value; draw(); };
+    app.querySelectorAll('[data-do]').forEach(b => b.onclick = () => { b.textContent = 'Preparando…'; b.disabled = true; setTimeout(() => { done.add(b.dataset.do); draw(); }, 900); });
+  }
+  draw();
+}
+
+/* ===================== ADVISORY ===================== */
+function madurez() {
+  const DIM = [
+    ['Datos', '¿Dónde vive la información para decidir?', ['En Excel de cada área', 'En el ERP, sin cruzar', 'Integrada en una base', 'Una sola fuente confiable']],
+    ['Procesos', '¿Qué tan documentados están los procesos clave?', ['No están escritos', 'Algunos documentados', 'Documentados y medidos', 'Medidos y mejorados']],
+    ['Tecnología', '¿Tus sistemas se hablan entre sí?', ['No, se captura a mano', 'Pocas conexiones', 'La mayoría conectados', 'Todo conectado']],
+    ['Personas', '¿El equipo usa los datos para decidir?', ['Casi nunca', 'Solo la dirección', 'Varias áreas', 'Todo el equipo']],
+    ['Analítica', '¿Cómo ves tus indicadores?', ['Reportes manuales', 'Reportes mensuales', 'Tableros semanales', 'Tableros al día con alertas']],
+    ['IA', '¿Usas inteligencia artificial?', ['No', 'Pruebas aisladas', 'En un proceso', 'En varios procesos']],
+  ];
+  const REC = {
+    Datos: 'Arquitectura de datos en Microsoft Fabric: una sola fuente para toda la empresa.',
+    Procesos: 'Diagnóstico de madurez y mapeo de procesos clave.',
+    Tecnología: 'Integración de sistemas y ETL: ERP, CRM y Excel en una sola fuente.',
+    Personas: 'Gestión del cambio y Programa de autonomía analítica.',
+    Analítica: 'Tableros ejecutivos con KPIs y alertas para la dirección.',
+    IA: 'Sprint de casos de uso de IA con Alexia Labs.',
+  };
+  const ans = [0, 1, 1, 1, 0, 0];
+  function draw() {
+    const sc = ans.map(a => a + 1), avg = sc.reduce((a, b) => a + b, 0) / sc.length;
+    const lv = avg < 1.75 ? ['Inicial', 1] : avg < 2.5 ? ['En desarrollo', 2] : avg < 3.25 ? ['Definido', 3] : ['Avanzado', 4];
+    const low = DIM.map((d, i) => [d[0], sc[i]]).sort((a, b) => a[1] - b[1]).slice(0, 3);
+    const R = 110, cx = 150, cy = 140, pt = (i, v) => { const a = -Math.PI / 2 + i * 2 * Math.PI / 6; return [cx + Math.cos(a) * R * v / 4, cy + Math.sin(a) * R * v / 4]; };
+    const ring = v => DIM.map((_, i) => pt(i, v).join(',')).join(' ');
+    app.innerHTML = `<div class="top"><div class="brand"><i style="background:#F2A93B">A</i>Alexia Advisory</div><span class="tag">Ejemplo interactivo</span></div>
+      <div class="ey">Diagnóstico de madurez digital</div><h1>¿Dónde está tu empresa hoy?</h1><p class="lede">Contesta 6 preguntas. El resultado se actualiza al instante.</p>
+      <div class="grid2"><div class="qs">${DIM.map((d, i) => `<div class="q"><b>${d[0]}</b><small>${d[1]}</small><div class="opts">${d[2].map((o, j) => `<button type="button" data-q="${i}" data-a="${j}" aria-pressed="${ans[i] === j}">${o}</button>`).join('')}</div></div>`).join('')}</div>
+      <div><div class="card"><div class="ey">Tu nivel</div><div class="big" style="margin-top:6px">${lv[0]}</div><div class="lvl">${[1, 2, 3, 4].map(n => `<i style="background:${n <= lv[1] ? '#F2A93B' : ''}"></i>`).join('')}</div>
+        <svg class="radar" viewBox="0 0 300 290" aria-label="Gráfica de madurez por dimensión">${[1, 2, 3, 4].map(v => `<polygon points="${ring(v)}" fill="none" stroke="var(--line)"/>`).join('')}
+          <polygon points="${sc.map((v, i) => pt(i, v).join(',')).join(' ')}" fill="rgba(242,169,59,.22)" stroke="#F2A93B" stroke-width="2"/>
+          ${DIM.map((d, i) => { const [x, y] = pt(i, 4.9); return `<text x="${x}" y="${y}" font-size="11.5" fill="#6e6e73" text-anchor="middle" dominant-baseline="middle">${d[0]}</text>`; }).join('')}</svg></div>
+        <div class="card" style="margin-top:12px"><h3>Por dónde empezar</h3><div class="recs">${low.map((l, i) => `<div class="rec"><i>${i + 1}</i><span><b>${l[0]}.</b> ${REC[l[0]]}</span></div>`).join('')}</div></div></div></div>
+      <p class="note">Ejemplo simplificado. El diagnóstico real de Alexia dura 2 semanas e incluye entrevistas y revisión de sistemas.</p>`;
+    app.querySelectorAll('[data-q]').forEach(b => b.onclick = () => { ans[+b.dataset.q] = +b.dataset.a; draw(); });
+  }
+  draw();
+}
+function roadmap() {
+  const INI = [
+    ['Tablero ejecutivo de ventas', 'Alto', 'Bajo'], ['Asistente comercial en WhatsApp', 'Alto', 'Bajo'], ['Integración ERP + CRM', 'Alto', 'Alto'],
+    ['Cotizador con descuento por cliente', 'Medio', 'Bajo'], ['Gobierno de datos', 'Medio', 'Medio'], ['Pronóstico estacional', 'Alto', 'Medio'],
+    ['Automatización de captura de facturas', 'Medio', 'Medio'], ['Adopción de Microsoft 365', 'Medio', 'Bajo'],
+  ];
+  const on = new Set([0, 1, 2, 5, 7]), V = { Alto: 3, Medio: 2, Bajo: 1 };
+  function lane(x) { const i = V[x[1]], e = V[x[2]]; return e === 1 ? 0 : (i === 3 && e === 2) || (i === 2 && e === 2) ? 1 : 2; }
+  function draw() {
+    const sel = INI.map((x, i) => [x, i]).filter(([, i]) => on.has(i));
+    const L = [[], [], []]; sel.forEach(([x, i]) => L[lane(x)].push([x, i]));
+    L.forEach(l => l.sort((a, b) => V[b[0][1]] - V[a[0][1]]));
+    app.innerHTML = `<div class="top"><div class="brand"><i style="background:#F2A93B">A</i>Alexia Advisory</div><span class="tag">Ejemplo interactivo</span></div>
+      <div class="ey">Roadmap de transformación digital</div><h1>Qué hacer primero.</h1><p class="lede">Elige tus iniciativas. Las ordenamos por impacto y esfuerzo.</p>
+      <div class="grid2"><div class="card"><h3>Iniciativas</h3>${INI.map((x, i) => `<label class="chk"><input type="checkbox" data-i="${i}" ${on.has(i) ? 'checked' : ''}>${x[0]}<span class="pill ${x[1] === 'Alto' ? 'ok' : 'at'}">Impacto ${x[1].toLowerCase()}</span></label>`).join('')}</div>
+      <div class="card"><h3>Impacto vs esfuerzo</h3><div class="mx"><span class="lb" style="left:10px;top:8px">Más impacto</span><span class="lb" style="right:10px;bottom:8px">Más esfuerzo →</span><span class="lb" style="left:10px;bottom:8px;color:#248a3d">Ganancias rápidas</span>
+        ${sel.map(([x, i], k) => { const ef = V[x[2]], im = V[x[1]]; const jx = (k % 3 - 1) * 4, jy = (k % 2 ? 1 : -1) * 4; return `<span class="pt" style="left:${(ef - .5) / 3 * 100 + jx}%;top:${(3.5 - im) / 3 * 100 + jy}%;background:${lane(x) === 0 ? '#34c759' : lane(x) === 1 ? '#0071e3' : '#F2A93B'}" title="${x[0]}">${i + 1}</span>`; }).join('')}</div></div></div>
+      <div class="card" style="margin-top:12px"><h3>Tu roadmap</h3><div class="lanes">${[['0 a 3 meses · ganancias rápidas', 0], ['3 a 6 meses', 1], ['6 a 12 meses', 2]].map(([t, n]) => `<div class="lane"><h4>${t}</h4>${L[n].map(([x, i]) => `<div class="it">${i + 1}. ${x[0]}<small>Impacto ${x[1].toLowerCase()} · esfuerzo ${x[2].toLowerCase()}</small></div>`).join('') || '<small style="color:#86868b">Sin iniciativas</small>'}</div>`).join('')}</div></div>
+      <p class="note">Ejemplo con impacto y esfuerzo cualitativos. En el roadmap real se calculan con tus datos y se define el retorno de cada iniciativa.</p>`;
+    app.querySelectorAll('[data-i]').forEach(c => c.onchange = () => { c.checked ? on.add(+c.dataset.i) : on.delete(+c.dataset.i); draw(); });
+  }
+  draw();
+}
+function m365() {
+  const A = [
+    { n: 'Dirección', lic: 8, act: 8, teams: 95, files: 70, cop: 50 },
+    { n: 'Finanzas', lic: 14, act: 12, teams: 80, files: 85, cop: 20 },
+    { n: 'Comercial', lic: 32, act: 22, teams: 60, files: 35, cop: 5 },
+    { n: 'Operaciones', lic: 40, act: 30, teams: 55, files: 40, cop: 0 },
+    { n: 'RH', lic: 9, act: 9, teams: 90, files: 80, cop: 10 },
+  ];
+  let sel = 'teams'; const done = new Set();
+  const M = { teams: 'Teams', files: 'Archivos en la nube', cop: 'Copilot' };
+  function draw() {
+    const lic = A.reduce((a, x) => a + x.lic, 0), act = A.reduce((a, x) => a + x.act, 0), idle = lic - act;
+    const w = k => A.reduce((a, x) => a + x[k] * x.lic, 0) / lic;
+    const worst = [...A].sort((a, b) => (a.act / a.lic) - (b.act / b.lic))[0], lowF = [...A].sort((a, b) => a.files - b.files)[0];
+    const ins = [
+      [`${idle} licencias sin uso en los últimos 30 días.`, `Reasignarlas o capacitar a sus usuarios. ${worst.n} concentra ${worst.lic - worst.act}.`, 'i1'],
+      [`${lowF.n} guarda solo el ${lowF.files}% de sus archivos en la nube.`, 'Sesión de 1 hora: OneDrive y SharePoint para el equipo.', 'i2'],
+    ];
+    app.innerHTML = `<div class="top"><div class="brand"><i style="background:#F2A93B">A</i>Alexia Advisory</div><span class="tag">Datos de ejemplo</span></div>
+      <div class="ey">Workplace as a Service · Microsoft 365</div><h1>¿Tu equipo usa lo que pagas?</h1><p class="lede">Adopción de Microsoft 365 por área, con acciones de gestión del cambio.</p>
+      <div class="ag"><div class="ag-h"><span class="orb"></span><b>Agente Alexia</b><small>${ins.length} acciones sugeridas</small></div>${ins.map(x => `<div class="ins"><span class="dot" style="background:#ff9f0a"></span><div class="tx"><b>${x[0]}</b><span><em>Propongo:</em> ${x[1]}</span></div>${done.has(x[2]) ? '<span class="done">✓ Programado</span>' : `<button class="btn" data-do="${x[2]}">Resolver</button>`}</div>`).join('')}</div>
+      <div class="kpis">
+        <div class="card kpi"><div class="l">Licencias activas<span class="pill ${act / lic >= .9 ? 'ok' : 'at'}">${act / lic >= .9 ? 'En meta' : 'Atención'}</span></div><div class="v">${act} de ${lic}</div><div class="m">meta ≥ 90% en uso</div><div class="a"><b>Qué hacer:</b> reasignar las ${idle} sin uso.</div></div>
+        <div class="card kpi"><div class="l">Uso de Teams<span class="pill ${w('teams') >= 75 ? 'ok' : 'at'}">${w('teams') >= 75 ? 'En meta' : 'Atención'}</span></div><div class="v">${nf(w('teams'), 0)}%</div><div class="m">meta ≥ 75% de usuarios por semana</div><div class="a"><b>Qué hacer:</b> juntas y chats del equipo en Teams.</div></div>
+        <div class="card kpi"><div class="l">Copilot<span class="pill rk">Riesgo</span></div><div class="v">${nf(w('cop'), 0)}%</div><div class="m">de usuarios lo usan cada semana</div><div class="a"><b>Qué hacer:</b> piloto con 5 casos de uso por área.</div></div>
+      </div>
+      <div class="card" style="margin-top:12px"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px"><h3 style="margin:0">Adopción por área</h3><div class="seg">${Object.entries(M).map(([k, l]) => `<button type="button" data-m="${k}" aria-pressed="${k === sel}">${l}</button>`).join('')}</div></div>
+        <div class="bars">${A.map(x => `<div class="bar"><span>${x.n}</span><span class="t"><i style="width:${x[sel]}%;background:${x[sel] >= 75 ? '#34c759' : x[sel] >= 40 ? '#ff9f0a' : '#ff3b30'}"></i><s style="left:75%"></s></span><span class="n">${x[sel]}%</span></div>`).join('')}</div><p class="note" style="margin-top:12px">La línea vertical es la meta de 75%.</p></div>${NOTE}`;
+    app.querySelectorAll('[data-m]').forEach(b => b.onclick = () => { sel = b.dataset.m; draw(); });
+    app.querySelectorAll('[data-do]').forEach(b => b.onclick = () => { b.textContent = 'Preparando…'; b.disabled = true; setTimeout(() => { done.add(b.dataset.do); draw(); }, 900); });
+  }
+  draw();
+}
+
+/* ===================== LABS ===================== */
+function casos() {
+  const C = {
+    Comercial: [['Prospectos con mayor probabilidad de compra', 5, 4], ['Respuesta automática a cotizaciones', 4, 5], ['Precio sugerido por cliente', 4, 3], ['Análisis de llamadas de venta', 3, 2]],
+    Cobranza: [['Cliente con riesgo de atraso', 5, 4], ['Recordatorios de pago por WhatsApp', 4, 5], ['Conciliación de pagos automática', 4, 3], ['Prioridad de llamadas de cobro', 3, 4]],
+    Inventarios: [['Pronóstico de demanda por producto', 5, 3], ['Alertas de desabasto', 5, 4], ['Detección de productos sin movimiento', 3, 5], ['Compra sugerida por proveedor', 4, 3]],
+    Finanzas: [['Captura de facturas con IA', 4, 5], ['Pronóstico de flujo de efectivo', 5, 3], ['Detección de gastos fuera de política', 3, 4], ['Cierre mensual asistido', 4, 2]],
+    Operaciones: [['Mantenimiento predictivo de equipos', 5, 2], ['Programación de producción', 4, 2], ['Inspección de calidad con imágenes', 4, 2], ['Rutas de entrega optimizadas', 4, 3]],
+    RH: [['Filtro de candidatos por perfil', 3, 4], ['Riesgo de rotación', 4, 3], ['Asistente de preguntas del personal', 3, 5], ['Plan de capacitación sugerido', 3, 4]],
+  };
+  let area = 'Comercial';
+  function draw() {
+    const L = C[area].map((x, i) => ({ n: x[0], v: x[1], f: x[2], s: x[1] * x[2], i })).sort((a, b) => b.s - a.s);
+    const best = L[0];
+    app.innerHTML = `<div class="top"><div class="brand"><i style="background:#F25C54">L</i>Alexia Labs</div><span class="tag">Ejemplo interactivo</span></div>
+      <div class="ey">Sprint de casos de uso</div><h1>Dónde la IA genera más valor.</h1><p class="lede">Elige un área. Ordenamos las ideas por valor y facilidad.</p>
+      <div class="seg" style="margin-top:16px" role="group" aria-label="Área">${Object.keys(C).map(a => `<button type="button" data-a="${a}" aria-pressed="${a === area}">${a}</button>`).join('')}</div>
+      <div class="grid2"><div class="card"><h3>Ideas evaluadas</h3>${L.map((x, k) => `<div class="chk" style="animation:pop .35s ${k * .05}s ease both"><b style="width:22px;color:${k === 0 ? '#F25C54' : '#86868b'}">${k + 1}</b><span style="flex:1">${x.n}<small style="display:block;color:#86868b;font-size:12px">Valor ${x.v}/5 · Facilidad ${x.f}/5</small></span><span class="pill ${x.s >= 16 ? 'ok' : x.s >= 12 ? 'at' : 'rk'}">${x.s >= 16 ? 'Prioridad' : x.s >= 12 ? 'Después' : 'Más adelante'}</span></div>`).join('')}</div>
+      <div class="card"><h3>Valor vs facilidad</h3><div class="mx"><span class="lb" style="left:10px;top:8px">Más valor</span><span class="lb" style="right:10px;bottom:8px">Más fácil →</span>
+        ${L.map((x, k) => `<span class="pt" style="left:${(x.f - .5) / 5 * 100}%;top:${(5.5 - x.v) / 5 * 100}%;background:${k === 0 ? '#F25C54' : '#B4B4B4'}">${k + 1}</span>`).join('')}</div>
+        <div class="verdict" style="background:rgba(242,92,84,.08)"><small style="color:#6e6e73;font-weight:600">Empieza por</small><b>${best.n}</b><span style="font-size:13px;color:#6e6e73">Siguiente paso: prueba de concepto con tus datos.</span></div></div></div>
+      <p class="note">Ejemplo con valores cualitativos. En el sprint real se califican con tu equipo y tus datos.</p>`;
+    app.querySelectorAll('[data-a]').forEach(b => b.onclick = () => { area = b.dataset.a; draw(); });
+  }
+  draw();
+}
+function poc() {
+  const CR = [
+    { k: 'prec', l: 'Precisión del pronóstico', meta: 85, min: 60, max: 98, u: '%', v: 88 },
+    { k: 'tiempo', l: 'Horas de planeación por semana', meta: 6, min: 2, max: 20, u: ' h', v: 5, low: 1 },
+    { k: 'uso', l: 'Usuarios que lo usan cada semana', meta: 70, min: 0, max: 100, u: '%', v: 64 },
+    { k: 'agot', l: 'Reducción de agotados', meta: 15, min: 0, max: 40, u: '%', v: 18 },
+  ];
+  function draw() {
+    const ok = CR.map(c => c.low ? c.v <= c.meta : c.v >= c.meta), n = ok.filter(Boolean).length;
+    const V = n === CR.length ? ['Escalar a producción', 'Cumple todos los criterios. Siguiente paso: llevarlo a toda la operación.', '#34c759', 'rgba(52,199,89,.10)', 3]
+      : n >= CR.length - 1 ? ['Ajustar y continuar', 'Cumple casi todo. Ajustar el criterio pendiente en un MVP de 4 semanas.', '#ff9f0a', 'rgba(255,159,10,.12)', 2]
+        : ['Detener o rediseñar', 'No cumple lo suficiente. Mejor invertir en otro caso de uso.', '#ff3b30', 'rgba(255,59,48,.10)', 1];
+    app.innerHTML = `<div class="top"><div class="brand"><i style="background:#F25C54">L</i>Alexia Labs</div><span class="tag">Ejemplo interactivo</span></div>
+      <div class="ey">Prueba de concepto · Pronóstico de demanda</div><h1>Probar antes de invertir.</h1><p class="lede">Mueve los resultados de la prueba. La decisión se calcula con criterios claros.</p>
+      <div class="grid2"><div class="card"><h3>Resultados de la prueba</h3><div class="rng">${CR.map((c, i) => `<div class="rg"><div class="h"><span>${c.l} <span class="pill ${ok[i] ? 'ok' : 'rk'}" style="margin-left:6px">${ok[i] ? 'Cumple' : 'No cumple'}</span></span><b>${c.v}${c.u}</b></div><input type="range" min="${c.min}" max="${c.max}" value="${c.v}" data-k="${i}" aria-label="${c.l}"><small style="color:#86868b;font-size:12px">Meta: ${c.low ? '≤ ' : '≥ '}${c.meta}${c.u}</small></div>`).join('')}</div></div>
+      <div class="card"><h3>Decisión</h3><div class="big" style="font-size:56px">${n}/${CR.length}</div><small style="color:#6e6e73">criterios cumplidos</small>
+        <div class="verdict" style="background:${V[3]}"><b style="color:${V[2]}">${V[0]}</b><span style="font-size:13.5px;color:#1d1d1f">${V[1]}</span></div>
+        <div class="steps">${['Sprint', 'Prueba de concepto', 'MVP', 'Producción'].map((s, i) => `<span class="${i <= V[4] ? 'on' : ''}">${s}</span>`).join('')}</div></div></div>
+      <p class="note">Datos de ejemplo. En una prueba real los criterios se acuerdan antes de empezar.</p>`;
+    app.querySelectorAll('[data-k]').forEach(r => r.oninput = () => { CR[+r.dataset.k].v = +r.value; const y = scrollY; draw(); scrollTo(0, y); const nr = app.querySelector(`[data-k="${r.dataset.k}"]`); nr && nr.focus(); });
+  }
+  draw();
+}
+const ROUTES = { restaurantes: () => dash('restaurantes'), retail: () => dash('retail'), logistica: () => dash('logistica'), madurez, roadmap, m365, casos, poc };
+function route() { (ROUTES[location.hash.slice(1)] || ROUTES.restaurantes)(); }
+addEventListener('hashchange', route); route();
+</script>
+</body></html>

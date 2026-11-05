@@ -1,0 +1,29 @@
+ALEXIA · RESERVAS CON FORMULARIO PROPIO
+
+La agenda ahora guarda solicitudes y muestra confirmación con folio.
+El panel privado está en /admin. No depende de Outlook ni envía correos.
+
+Para probar en tu computadora (Node.js 22 actualizado):
+  npm ci
+  npm run setup-local
+  npm start
+
+Sitio: http://localhost:3000
+Panel: http://localhost:3000/admin
+La contraseña se genera en el archivo privado .env (ADMIN_PASSWORD).
+Datos locales: data/reservas.sqlite.
+
+Para publicar en Vercel debes conectar Neon PostgreSQL, ejecutar el archivo
+SQL de database/schema.sql y configurar las cuatro variables del servidor.
+Abre RESERVAS_VERCEL.md: contiene el procedimiento completo.
+
+No basta con subir solo el HTML. No subas .env, data/, node_modules/ ni dist/.
+El ZIP no incluye contraseñas, secretos ni datos de reservas reales.
+
+INSTALACIÓN EN CELULAR
+El sitio debe usar HTTPS. iPhone: Compartir > Agregar a pantalla de inicio.
+Android: menú del navegador > Instalar aplicación / Agregar a inicio.
+La reserva requiere internet; el portafolio y las demos pueden abrirse offline.
+
+El tablero, CRM y demos conservan sus datos ficticios de ejemplo.
+El tema oscuro mantiene las mejoras de contraste y los acentos de color.
